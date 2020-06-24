@@ -8,15 +8,18 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [data, setData] = useState('');
 
   const handleLogin = async (event: any) => {
     event.preventDefault();
+
     try {
       await app.auth().signInWithEmailAndPassword(email, password);
+
       history.push('/');
       setError(false);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
       setError(true);
     }
   };
