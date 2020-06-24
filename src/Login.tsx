@@ -4,17 +4,20 @@ import { useHistory } from 'react-router-dom';
 import app from './firebase';
 
 const Login = () => {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const [error, setError] = useState(false);
 
   const handleLogin = async (event: any) => {
     event.preventDefault();
     try {
       await app.auth().signInWithEmailAndPassword(email, password);
       history.push('/');
+      setError(false);
     } catch (error) {
-      alert(error);
+      console.log(error);
+      setError(true);
     }
   };
 
@@ -22,8 +25,8 @@ const Login = () => {
     <div>
       <h2>Login</h2>
       <div>
-        <h1>Sign up</h1>
         <form onSubmit={handleLogin}>
+          {error && <p> your password or email are wrong</p>}
           <div>
             Email
             <input
