@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../Auth';
+import { AuthContext } from '../context/authContext';
 import { doSignOut } from '../firebase/auth';
 
 const Navigation = () => {

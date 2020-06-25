@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-curly-newline */
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { AuthContext } from './Auth';
+import { AuthContext } from './context/authContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const currentUser = useContext(AuthContext);
