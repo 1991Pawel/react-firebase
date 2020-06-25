@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import app from './firebase';
+import { auth } from './firebase/firebase';
 
 type FirebaseUser = firebase.User | null;
 
@@ -9,7 +9,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUser>(null);
 
   useEffect(() => {
-    return app.auth().onAuthStateChanged(setCurrentUser);
+    return auth.onAuthStateChanged(setCurrentUser);
   }, []);
 
   return (

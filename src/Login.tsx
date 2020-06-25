@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, SyntheticEvent } from 'react';
 import { useHistory } from 'react-router-dom';
-import app from './firebase';
+import { auth } from './firebase/firebase';
+import { doSignInWithEmailAndPassword } from './firebase/auth';
 
 type FirebaseError = firebase.auth.Error | boolean;
 
@@ -15,13 +16,12 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      await app.auth().signInWithEmailAndPassword(email, password);
-
+      await doSignInWithEmailAndPassword(email, password);
       history.push('/');
       setError(false);
     } catch (err) {
-      // console.log(err);
-
+      // eslint-disable-next-line no-console
+      console.log(err);
       setError(true);
     }
   };

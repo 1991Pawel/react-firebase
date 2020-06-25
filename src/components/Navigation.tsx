@@ -1,24 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import * as firebase from 'firebase';
 import { AuthContext } from '../Auth';
-import 'firebase/firestore';
+import { doSignOut } from '../firebase/auth';
 
 const Navigation = () => {
   const user = useContext(AuthContext);
 
   const logoutHandler = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        // Sign-out successful.
-        console.log('wylogowany');
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log('coś poszło nie tak');
-      });
+    doSignOut();
   };
 
   const userLinks = (

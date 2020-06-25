@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, SyntheticEvent } from 'react';
 import { useHistory } from 'react-router-dom';
-import app from './firebase';
+import { auth } from './firebase/firebase';
 
 type FirebaseError = firebase.auth.Error | boolean;
 
@@ -14,7 +14,7 @@ const SignUp = () => {
   const handleSignUp = async (event: SyntheticEvent) => {
     event.preventDefault();
     try {
-      await app.auth().createUserWithEmailAndPassword(email, password);
+      await auth.createUserWithEmailAndPassword(email, password);
       history.push('/');
       setError(false);
     } catch (err) {
