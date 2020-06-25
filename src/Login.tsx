@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, SyntheticEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import app from './firebase';
+
+type FirebaseError = firebase.auth.Error | boolean;
 
 const Login = () => {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<FirebaseError>(false);
 
-  const handleLogin = async (event: any) => {
+  const handleLogin = async (event: SyntheticEvent) => {
     event.preventDefault();
 
     try {
@@ -18,7 +20,8 @@ const Login = () => {
       history.push('/');
       setError(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+
       setError(true);
     }
   };

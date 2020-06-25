@@ -1,30 +1,31 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, SyntheticEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import app from './firebase';
+
+type FirebaseError = firebase.auth.Error | boolean;
 
 const SignUp = () => {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState<any>(false);
+  const [error, setError] = useState<FirebaseError>();
 
-  const handleSignUp = async (event: any) => {
+  const handleSignUp = async (event: SyntheticEvent) => {
     event.preventDefault();
     try {
       await app.auth().createUserWithEmailAndPassword(email, password);
       history.push('/');
-      setError('');
+      setError(false);
     } catch (err) {
       setError(err);
-      console.log(err);
     }
   };
 
   return (
     <div>
       <h1>Sign up</h1>
-      {error && `${error.message}`}
+      {error && <p>Error{`${error}`}</p>}
       <form onSubmit={handleSignUp}>
         <div>
           Email
