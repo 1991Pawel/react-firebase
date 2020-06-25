@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useState } from 'react';
-import * as firebase from 'firebase';
-import 'firebase/firestore';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const ListItem = (post: any) => <li>{post.post.title}</li>;
 
@@ -9,6 +9,7 @@ const Home = () => {
   const [data, setData] = useState<any>([]);
   useEffect(() => {
     const db = firebase.firestore();
+
     db.collection('projects')
       .get()
       .then((snapshop) => {
