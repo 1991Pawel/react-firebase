@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase/firebase';
-
-interface CollectionItem {
-  id: string;
-  city: string;
-  title: string;
-}
+import { CollectionItem } from '../types/types';
 
 export const useCollection = (name: string) => {
   const [collection, setCollection] = useState<CollectionItem[]>([]);
