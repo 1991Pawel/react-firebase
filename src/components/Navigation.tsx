@@ -4,7 +4,7 @@ import { AuthContext } from '../context/authContext';
 import { doSignOut } from '../firebase/auth';
 
 const Navigation = () => {
-  const { currentUser } = useContext<any>(AuthContext);
+  const currentUser = useContext(AuthContext);
 
   const logoutHandler = () => {
     doSignOut();

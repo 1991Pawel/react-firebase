@@ -15,9 +15,10 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
-
-    return auth.onAuthStateChanged(setCurrentUser);
+    return auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
   }, []);
 
   return (

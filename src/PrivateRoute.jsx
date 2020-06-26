@@ -1,10 +1,13 @@
 /* eslint-disable react/jsx-curly-newline */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { AuthContext } from './context/authContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { currentUser, loading } = useContext(AuthContext);
+  if (loading) {
+    return <div>Ładowanie</div>;
+  }
 
   return (
     <Route
