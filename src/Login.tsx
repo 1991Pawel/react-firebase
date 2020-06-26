@@ -28,6 +28,7 @@ const Login = () => {
   return (
     <div className="login-page">
       <div className="form">
+        <h1>Login</h1>
         <form onSubmit={handleLogin} className="login-form">
           <input
             value={email}

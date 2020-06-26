@@ -23,30 +23,30 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <h1>Sign up</h1>
-      {error && <p>Error{`${error}`}</p>}
-      <form onSubmit={handleSignUp}>
-        <div>
-          Email
+    <div className="login-page">
+      <div className="form">
+        <h1>Sign up</h1>
+        {error && <p>Error{`${error}`}</p>}
+
+        <form onSubmit={handleSignUp}>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            type="email"
-            placeholder="Email"
+            type="text"
+            placeholder="email"
           />
-        </div>
-        <label>Password</label>
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          name="password"
-          type="password"
-          placeholder="Password"
-        />
-        <button type="submit">Sign Up</button>
-      </form>
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="password"
+          />
+          <button type="submit">Login</button>
+          <p className="message">
+            you already have account? <a href="/login">Login</a>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
