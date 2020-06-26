@@ -1,31 +1,22 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import { useCollection } from './hook/useCollection';
 
 const ListItem = (post: any) => <li>{post.post.title}</li>;
 
 const Home = () => {
-  const [data, setData] = useState<any>([]);
-  useEffect(() => {
-    const db = firebase.firestore();
+  const [posts, setPosts] = useState([]);
+  const data = useCollection('projects');
 
-    db.collection('projects')
-      .get()
-      .then((snapshop) => {
-        snapshop.docs.forEach((doc) => {
-          const item = doc.data();
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          setData((prev: any) => [...prev, item]);
-        });
-      });
-  }, []);
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
 
   return (
     <div>
       <h2>Home</h2>
-      {data &&
-        data.map((post: { title: any }) => (
+      {posts &&
+        posts.map((post: { title: any }) => (
           <ListItem key={post.title} post={post} />
         ))}
     </div>
