@@ -5,7 +5,7 @@ import { useCollection } from './hook/useCollection';
 const ListItem = (post: any) => <li>{post.post.title}</li>;
 
 const Home = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<any>([]);
   const data = useCollection('projects');
 
   useEffect(() => {
