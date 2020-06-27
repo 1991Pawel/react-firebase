@@ -1,19 +1,10 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useState } from 'react';
-import { useCollection } from './hook/useCollection';
-import { CollectionItem } from './types/types';
 import { db } from './firebase/firebase';
-
-const ListItem = (post: CollectionItem) => <li>{post.title}</li>;
+import List from './components/List';
 
 const Home = () => {
-  const [posts, setPosts] = useState<CollectionItem[]>([]);
-  const data = useCollection('projects');
   const [project, setProject] = useState('');
-
-  useEffect(() => {
-    setPosts(data);
-  }, [data]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +18,6 @@ const Home = () => {
   return (
     <div>
       <h2>Home</h2>
-      {posts && posts.map((item) => <li key={item.id}>{item.title}</li>)}
       <div>
         <h2>Add</h2>
         <form onSubmit={(e) => onSubmit(e)}>
@@ -38,6 +28,7 @@ const Home = () => {
           />
           <button type="submit">Send</button>
         </form>
+        <List />
       </div>
     </div>
   );
