@@ -91,3 +91,38 @@ nav ul a {
 .form .register-form {
   display: none;
 }
+
+.home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__form {
+  margin-top: 2rem;
+  border: 1px solid rgb(230, 219, 219);
+  display: flex;
+}
+
+.home__form button {
+  height: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.home__form input {
+  padding: 0.5rem;
+}
+
+.list {
+  padding: 2rem;
+  list-style: none;
+  width: 250px;
+}
+
+.list li {
+  padding: 0.5rem;
+  margin: 0.2rem;
+  background-color: #ccc;
+}

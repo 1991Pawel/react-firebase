@@ -11,7 +11,7 @@ const List = () => {
   }, [data]);
 
   return (
-    <ul>
+    <ul className="list">
       {posts && posts.map((item) => <ListItem key={item.id} {...item} />)}
     </ul>
   );

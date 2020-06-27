@@ -13,7 +13,6 @@ const Login = () => {
 
   const handleLogin = async (event: SyntheticEvent) => {
     event.preventDefault();
-    console.log(error);
 
     try {
       await doSignInWithEmailAndPassword(email, password);
