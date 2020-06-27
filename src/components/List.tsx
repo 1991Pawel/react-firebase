@@ -7,6 +7,7 @@ import { db } from '../firebase/firebase';
 const List = () => {
   const data = useCollection('projects');
   const [posts, setPosts] = useState<CollectionItem[]>([]);
+
   const removeItem = (id: string) => {
     db.collection('projects').doc(id).delete();
   };

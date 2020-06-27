@@ -3,19 +3,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import { db } from './firebase/firebase';
 import List from './components/List';
 import { AuthContext } from './context/authContext';
+import { useCurrentUser } from './hook/useCurrentUser';
 
 const Home = () => {
   const [project, setProject] = useState('');
-  const [userId, setUserId] = useState('');
-  const currentUser = useContext(AuthContext);
-
-  useEffect(() => {
-    if (currentUser?.currentUser?.uid) {
-      const id = currentUser.currentUser.uid;
-
-      setUserId(id);
-    }
-  }, [currentUser]);
+  const userId = useCurrentUser();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
