@@ -6,7 +6,6 @@ import { CollectionItem } from '../types/types';
 const List = () => {
   const data = useCollection('projects');
   const [posts, setPosts] = useState<CollectionItem[]>([]);
-  console.log(posts);
   useEffect(() => {
     setPosts(data);
   }, [data]);

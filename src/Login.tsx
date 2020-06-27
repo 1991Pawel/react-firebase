@@ -13,6 +13,7 @@ const Login = () => {
 
   const handleLogin = async (event: SyntheticEvent) => {
     event.preventDefault();
+    console.log(error);
 
     try {
       await doSignInWithEmailAndPassword(email, password);
@@ -29,6 +30,7 @@ const Login = () => {
     <div className="login-page">
       <div className="form">
         <h1>Login</h1>
+        {error && <p>Błąd logowania </p>}
         <form onSubmit={handleLogin} className="login-form">
           <input
             value={email}

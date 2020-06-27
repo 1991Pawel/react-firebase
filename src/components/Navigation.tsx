@@ -4,7 +4,8 @@ import { AuthContext } from '../context/authContext';
 import { doSignOut } from '../firebase/auth';
 
 const Navigation = () => {
-  const { currentUser }: any = useContext(AuthContext);
+  const context = useContext(AuthContext);
+  const userIsLogged = context?.currentUser !== null;
 
   const logoutHandler = () => {
     doSignOut();
@@ -36,7 +37,7 @@ const Navigation = () => {
 
   return (
     <header>
-      <nav>{currentUser ? userLinks : guestLinks}</nav>
+      <nav>{userIsLogged ? userLinks : guestLinks}</nav>
     </header>
   );
 };
