@@ -118,11 +118,24 @@ nav ul a {
 .list {
   padding: 2rem;
   list-style: none;
-  width: 250px;
+  width: 300px;
 }
 
 .list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem;
   margin: 0.2rem;
-  background-color: #ccc;
+  background-color: rgb(240, 240, 240);
+}
+.list button {
+  margin-left: auto;
+  cursor: pointer;
+  background-color: rgb(219, 52, 52);
+  color: #fff;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

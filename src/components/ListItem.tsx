@@ -1,6 +1,20 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { CollectionItem } from '../types/types';
 
-const ListItem = (item: CollectionItem) => <li key={item.id}>{item.title}</li>;
+interface Item {
+  item: CollectionItem;
+  removeItem: () => void;
+  key: string;
+}
+
+const ListItem = ({ removeItem, item }: Item) => (
+  <li key={item.id}>
+    <p>{item.title}</p>
+    <button type="button" onClick={removeItem}>
+      X
+    </button>
+  </li>
+);
 
 export default ListItem;
