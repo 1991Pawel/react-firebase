@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase';
-
-type FirebaseUser = firebase.User | null;
+import { FirebaseUser } from '../types/types';
 
 interface Auth {
   currentUser: FirebaseUser;

@@ -4,3 +4,4 @@ export interface CollectionItem {
   title: string;
   userId?: string;
 }
+export type FirebaseUser = firebase.User | null;

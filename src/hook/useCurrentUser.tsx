@@ -1,15 +1,16 @@
 import { useEffect, useContext, useState } from 'react';
 import { AuthContext } from '../context/authContext';
+import { FirebaseUser } from '../types/types';
 
 export const useCurrentUser = () => {
-  const [userId, setUserId] = useState('');
+  const [user, setUser] = useState<FirebaseUser | null>(null);
   const currentUser = useContext(AuthContext);
 
   useEffect(() => {
-    if (currentUser?.currentUser?.uid) {
-      setUserId(currentUser.currentUser.uid);
+    if (currentUser?.currentUser) {
+      setUser(currentUser.currentUser);
     }
-  }, [userId, currentUser]);
+  }, [user, currentUser]);
 
-  return userId;
+  return user;
 };
