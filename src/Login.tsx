@@ -29,6 +29,7 @@ const Login = () => {
     <div className="login-page">
       <div className="form">
         <h1>Login</h1>
+        {error && <p>Błąd logowania </p>}
         <form onSubmit={handleLogin} className="login-form">
           <input
             value={email}

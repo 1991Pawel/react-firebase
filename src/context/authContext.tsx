@@ -8,9 +8,7 @@ interface Auth {
   loading: boolean;
 }
 
-export const AuthContext = React.createContext<Auth | null | FirebaseUser>(
-  null
-);
+export const AuthContext = React.createContext<Auth | null>(null);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUser>(null);

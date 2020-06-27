@@ -1,5 +1,5 @@
 export interface CollectionItem {
   id: string;
-  city: string;
+  city?: string;
   title: string;
 }
