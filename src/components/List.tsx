@@ -11,22 +11,23 @@ const List = () => {
   const removeItem = (id: string) => {
     db.collection('projects').doc(id).delete();
   };
-
   useEffect(() => {
     setPosts(data);
   }, [data]);
 
   return (
-    <ul className="list">
-      {posts &&
-        posts.map((item) => (
-          <ListItem
-            removeItem={() => removeItem(item.id)}
-            key={item.id}
-            item={item}
-          />
-        ))}
-    </ul>
+    <>
+      <ul className="list">
+        {posts &&
+          posts.map((item) => (
+            <ListItem
+              removeItem={() => removeItem(item.id)}
+              key={item.id}
+              item={item}
+            />
+          ))}
+      </ul>
+    </>
   );
 };
 

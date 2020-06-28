@@ -1,11 +1,12 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import { db } from './firebase/firebase';
-import List from './components/List';
 import { useCurrentUser } from './hook/useCurrentUser';
+import List from './components/List';
 
 const Home = () => {
   const [project, setProject] = useState('');
+  const [error, setError] = useState(false);
   const context = useCurrentUser();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,6 +17,9 @@ const Home = () => {
         city: 'any',
         userId: context?.uid,
       });
+      setError(false);
+    } else {
+      setError(true);
     }
     setProject('');
   };
@@ -23,6 +27,7 @@ const Home = () => {
   return (
     <div className="home">
       <h2>Add</h2>
+      {error && <p>input is empty</p>}
       <form className="home__form" onSubmit={(e) => onSubmit(e)}>
         <input
           value={project}

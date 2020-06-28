@@ -12,7 +12,7 @@ export const useCollection = (name: string) => {
   const documentsCollection = (doc: firebase.firestore.DocumentData) => {
     return { id: doc.id, ...doc.data() };
   };
-  useEffect((): (() => void) => {
+  useEffect(() => {
     const subscribe = db.collection(name).onSnapshot((snapshot) => {
       const dataFromCollection = snapshot.docs.map(documentsCollection);
       const filterDataByUser = dataFromCollection.filter(
