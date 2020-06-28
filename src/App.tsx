@@ -16,8 +16,8 @@ function App() {
       <ThemeProvider theme={theme} />
       <Router>
         <Navigation />
-        <PrivateRoute exact path="/" component={Dashboard} />
-        <Route exact path="/welcome" component={Welcome} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/" component={Welcome} />
       </Router>
     </AuthProvider>
   );

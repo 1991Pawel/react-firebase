@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, SyntheticEvent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { doSignInWithEmailAndPassword } from './firebase/auth';
+import { doSignInWithEmailAndPassword } from '../firebase/auth';
 
 type FirebaseError = firebase.auth.Error | boolean;
 
