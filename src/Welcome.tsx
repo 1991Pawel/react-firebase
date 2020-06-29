@@ -5,8 +5,12 @@ const WelcomeWrapper = styled.div`
   background: #ccc;
 `;
 
+const GlobalContainer = styled.div`
+  padding: 2rem;
+`;
+
 const Logo = styled.div`
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.primary};
 `;
 
@@ -19,13 +23,15 @@ const WelcomeSubheading = styled.h3`
 
 const Welcome = () => {
   return (
-    <WelcomeWrapper>
-      <Logo>YourTask</Logo>
-      <WelcomeHeading>Zacznij zarządzać swoimi zadaniami</WelcomeHeading>
-      <WelcomeSubheading>
-        Zarejestruj się aby korzystać bezpłatnie z your Task
-      </WelcomeSubheading>
-    </WelcomeWrapper>
+    <GlobalContainer>
+      <WelcomeWrapper>
+        <Logo>YourTask</Logo>
+        <WelcomeHeading>Zacznij zarządzać swoimi zadaniami</WelcomeHeading>
+        <WelcomeSubheading>
+          Zarejestruj się aby korzystać bezpłatnie z your Task
+        </WelcomeSubheading>
+      </WelcomeWrapper>
+    </GlobalContainer>
   );
 };
 
