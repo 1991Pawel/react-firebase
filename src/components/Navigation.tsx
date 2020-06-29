@@ -1,44 +1,41 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/authContext';
+import React from 'react';
+import styled from 'styled-components';
 import { doSignOut } from '../firebase/auth';
+import Button from './Button';
+
+const HeaderWrapper = styled.header`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1.5rem;
+
+  li {
+    list-style: none;
+  }
+  button {
+    margin-left: auto;
+  }
+`;
 
 const Navigation = () => {
-  const context = useContext(AuthContext);
-  const userIsLogged = context?.currentUser !== null;
-
   const logoutHandler = () => {
     doSignOut();
   };
 
-  const userLinks = (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link onClick={logoutHandler} to="/login">
-          Logout
-        </Link>
-      </li>
-    </ul>
-  );
-
-  const guestLinks = (
-    <ul>
-      <li>
-        <Link to="/signup">SignUp</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-    </ul>
-  );
-
   return (
-    <header>
-      <nav>{userIsLogged ? userLinks : guestLinks}</nav>
-    </header>
+    <HeaderWrapper>
+      <nav>
+        <ul>
+          <li>
+            <Button primary onClick={logoutHandler}>
+              Wyloguj
+            </Button>
+          </li>
+        </ul>
+      </nav>
+    </HeaderWrapper>
   );
 };
 

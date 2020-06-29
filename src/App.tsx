@@ -1,21 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './utils/theme';
 import { AuthProvider } from './context/authContext';
-import SingUp from './SignUp';
-import Login from './Login';
-import Home from './Home';
+import Welcome from './Welcome';
+import Dashboard from './Dashboard';
 import PrivateRoute from './PrivateRoute';
-import Navigation from './components/Navigation';
+import GlobalStyle from './GlobalStyles/GlobalStyles';
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Navigation />
-        <PrivateRoute exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SingUp} />
-      </Router>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Router>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/" component={Welcome} />
+        </Router>
+      </ThemeProvider>
     </AuthProvider>
   );
 }
