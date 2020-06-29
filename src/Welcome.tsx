@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Form from './components/Form';
-import Button from './components/Button';
+import BackgroundWelcome from './assets/welcomeBg.svg';
+import welcomeImg from './assets/welcomeImg.svg';
 
 const WelcomeWrapper = styled.div`
-  border: 1px solid red;
-`;
-
-const GlobalContainer = styled.div`
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  height: 100vh;
 `;
 
 const Logo = styled.div`
@@ -28,21 +27,53 @@ const WelcomeSubheading = styled.h3`
   font-weight: ${({ theme }) => theme.fontWeight.semi};
 `;
 
+const WelcomeContentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  header {
+    margin: 0 auto;
+  }
+`;
+const WelcomeImageWrapper = styled.div`
+  background: #d9e5f9;
+  height: 100vh;
+  width: 100%;
+  background-image: url(${BackgroundWelcome});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+`;
+
+const StyledImage = styled.img`
+  display: none;
+  @media screen and (min-width: 600px) {
+    display: block;
+    height: auto;
+    width: 80%;
+  }
+  @media screen and (min-width: 1000px) {
+    max-width: 500px;
+  }
+`;
+
 const Welcome = () => {
-  const clickHandler = () => {
-    console.log('fafa');
-  };
   return (
-    <GlobalContainer>
-      <WelcomeWrapper>
-        <Logo>YourTask</Logo>
-        <WelcomeHeading>Zacznij zarządzać swoimi zadaniami</WelcomeHeading>
-        <WelcomeSubheading>
-          Zaloguj się na swoje konto, i zarządzaj swoimi zadaniami
-        </WelcomeSubheading>
-        <Form />
-      </WelcomeWrapper>
-    </GlobalContainer>
+    <WelcomeWrapper>
+      <WelcomeContentWrapper>
+        <header>
+          <Logo>YourTask</Logo>
+          <WelcomeHeading>Zacznij zarządzać swoimi zadaniami</WelcomeHeading>
+          <WelcomeSubheading>
+            Zaloguj się na swoje konto, i zarządzaj swoimi zadaniami
+          </WelcomeSubheading>
+          <Form />
+        </header>
+      </WelcomeContentWrapper>
+      <WelcomeImageWrapper>
+        <StyledImage src={welcomeImg} alt="task decoration" />
+      </WelcomeImageWrapper>
+    </WelcomeWrapper>
   );
 };
 

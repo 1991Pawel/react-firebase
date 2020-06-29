@@ -21,6 +21,9 @@ const WrapperInput = styled.div`
   input {
     padding: 0.2rem;
     color: ${({ theme }) => theme.colors.primary};
+    border: none;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
+    outline: none;
   }
 `;
 
