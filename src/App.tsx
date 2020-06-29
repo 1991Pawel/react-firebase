@@ -7,6 +7,8 @@ import Welcome from './Welcome';
 import Dashboard from './Dashboard';
 import PrivateRoute from './PrivateRoute';
 import GlobalStyle from './GlobalStyles/GlobalStyles';
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
 
 function App() {
   return (

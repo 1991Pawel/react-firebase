@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Form from './components/Form';
+import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
 import BackgroundWelcome from './assets/welcomeBg.svg';
 import welcomeImg from './assets/welcomeImg.svg';
 
@@ -30,6 +31,7 @@ const WelcomeSubheading = styled.h3`
 const WelcomeContentWrapper = styled.div`
   width: 100%;
   display: flex;
+  padding: 1rem;
   header {
     margin: 0 auto;
   }
@@ -43,6 +45,11 @@ const WelcomeImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  display: none;
+
+  @media screen and (min-width: 400px) {
+    display: flex;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -58,6 +65,8 @@ const StyledImage = styled.img`
 `;
 
 const Welcome = () => {
+  const [haveAccount, setHaveAccount] = useState(true);
+
   return (
     <WelcomeWrapper>
       <WelcomeContentWrapper>
@@ -67,7 +76,11 @@ const Welcome = () => {
           <WelcomeSubheading>
             Zaloguj się na swoje konto, i zarządzaj swoimi zadaniami
           </WelcomeSubheading>
-          <Form />
+          {haveAccount ? (
+            <LoginForm setHaveAccount={setHaveAccount} />
+          ) : (
+            <RegisterForm setHaveAccount={setHaveAccount} />
+          )}
         </header>
       </WelcomeContentWrapper>
       <WelcomeImageWrapper>

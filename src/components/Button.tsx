@@ -23,7 +23,7 @@ const StyledButton = styled.button<{ primary?: boolean }>`
 
 interface ButtonProps {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: any;
   primary?: boolean;
 }
 

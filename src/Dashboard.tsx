@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { db } from './firebase/firebase';
 import { useCurrentUser } from './hook/useCurrentUser';
 import List from './components/List';
+import Navigation from './components/Navigation';
 
 const Home = () => {
   const [project, setProject] = useState('');
@@ -26,6 +27,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Navigation />
       <h2>Add</h2>
       {error && <p>input is empty</p>}
       <form className="home__form" onSubmit={(e) => onSubmit(e)}>
