@@ -1,9 +1,16 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { db } from './firebase/firebase';
 import { useCurrentUser } from './hook/useCurrentUser';
 import List from './components/List';
 import Navigation from './components/Navigation';
+import SideBar from './components/SideBar';
+
+const DashBoardWrapper = styled.div`
+  border: 5px solid red;
+  margin-top: 5rem;
+`;
 
 const Home = () => {
   const [project, setProject] = useState('');
@@ -26,20 +33,22 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <>
       <Navigation />
-      <h2>Add</h2>
-      {error && <p>input is empty</p>}
-      <form className="home__form" onSubmit={(e) => onSubmit(e)}>
-        <input
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
-          type="text"
-        />
-        <button type="submit">Send</button>
-      </form>
-      <List />
-    </div>
+      <DashBoardWrapper>
+        <h2>Add</h2>
+        {error && <p>input is empty</p>}
+        <form className="home__form" onSubmit={(e) => onSubmit(e)}>
+          <input
+            value={project}
+            onChange={(e) => setProject(e.target.value)}
+            type="text"
+          />
+          <button type="submit">Send</button>
+        </form>
+        <List />
+      </DashBoardWrapper>
+    </>
   );
 };
 

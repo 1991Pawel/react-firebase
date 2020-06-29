@@ -4,10 +4,18 @@ import { doSignOut } from '../firebase/auth';
 import Button from './Button';
 
 const HeaderWrapper = styled.header`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   padding: 1.5rem;
 
   li {
     list-style: none;
+  }
+  button {
+    margin-left: auto;
   }
 `;
 
@@ -22,7 +30,7 @@ const Navigation = () => {
         <ul>
           <li>
             <Button primary onClick={logoutHandler}>
-              Logout
+              Wyloguj
             </Button>
           </li>
         </ul>
