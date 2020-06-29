@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Form from './components/Form';
+import Button from './components/Button';
 
 const WelcomeWrapper = styled.div`
-  background: #ccc;
+  border: 1px solid red;
 `;
 
 const GlobalContainer = styled.div`
@@ -12,24 +14,33 @@ const GlobalContainer = styled.div`
 const Logo = styled.div`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.primary};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;
 
 const WelcomeHeading = styled.h2`
-  font-size: 2.5rem;
+  font-size: 1.7rem;
+  margin: 3rem 0 1rem;
+  color: ${({ theme }) => theme.colors.dark};
 `;
 const WelcomeSubheading = styled.h3`
-  font-size: 1.6rem;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.grey};
+  font-weight: ${({ theme }) => theme.fontWeight.semi};
 `;
 
 const Welcome = () => {
+  const clickHandler = () => {
+    console.log('fafa');
+  };
   return (
     <GlobalContainer>
       <WelcomeWrapper>
         <Logo>YourTask</Logo>
         <WelcomeHeading>Zacznij zarządzać swoimi zadaniami</WelcomeHeading>
         <WelcomeSubheading>
-          Zarejestruj się aby korzystać bezpłatnie z your Task
+          Zaloguj się na swoje konto, i zarządzaj swoimi zadaniami
         </WelcomeSubheading>
+        <Form />
       </WelcomeWrapper>
     </GlobalContainer>
   );
