@@ -47,14 +47,21 @@ const WelcomeImageWrapper = styled.div`
   padding: 2rem;
   display: none;
 
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 500px) {
     display: flex;
+    width: 30%;
+  }
+  @media screen and (min-width: 700px) {
+    width: 80%;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 100%;
   }
 `;
 
 const StyledImage = styled.img`
   display: none;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 700px) {
     display: block;
     height: auto;
     width: 80%;
