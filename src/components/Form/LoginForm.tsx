@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+
 import Button from '../Button';
 import { doSignInWithEmailAndPassword } from '../../firebase/auth';
 import {
@@ -9,14 +9,20 @@ import {
   WrapperInput,
   WrapperForm,
 } from './StyledForm';
+import { useForm } from '../../hook/useForm';
 
 type FirebaseError = firebase.auth.Error | boolean;
 
 const LoginForm = ({ setHaveAccount }: any) => {
-  const history = useHistory();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<FirebaseError>(false);
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    history,
+    error,
+    setError,
+  } = useForm();
 
   const loginHandler = async (event: any) => {
     event.preventDefault();
@@ -28,6 +34,7 @@ const LoginForm = ({ setHaveAccount }: any) => {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);
+
       setError(true);
     }
   };
@@ -35,21 +42,22 @@ const LoginForm = ({ setHaveAccount }: any) => {
   return (
     <WrapperForm>
       <WrapperInput>
+        {error && 'błąd logowania'}
         <label htmlFor="email">Email Adress</label>
         <input
-          value={email}
           onChange={(e) => setEmail(e.target.value)}
           id="email"
           name="email"
           type="text"
+          value={email}
         />
         <label htmlFor="password">Password</label>
         <input
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
           id="password"
           name="password"
           type="password"
+          value={password}
         />
       </WrapperInput>
       <FormFooter>
