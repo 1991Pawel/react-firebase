@@ -11,11 +11,12 @@ const StyledButton = styled.button<{ primary?: boolean }>`
   background: ${({ theme }) => theme.colors.light};
   font-weight: ${({ theme }) => theme.fontWeight.semi};
   border: 1px solid ${({ theme }) => theme.colors.primary};
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 
   margin-right: 2rem;
   transition: all 0.3s ease-in-out;
   &:hover {
-    opacity: 0.9;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
   }
   cursor: pointer;
   ${({ primary, theme }) =>
@@ -23,6 +24,7 @@ const StyledButton = styled.button<{ primary?: boolean }>`
     css`
       background-color: ${theme.colors.primary};
       color: ${theme.colors.light};
+      background-image: linear-gradient(90deg, #5c51f2, #234bcf);
     `};
 `;
 
