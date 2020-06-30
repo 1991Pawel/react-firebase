@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { doSignOut } from '../firebase/auth';
 import Button from './Button';
+import { ModalContext } from '../context/modalContext';
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -10,16 +11,25 @@ const HeaderWrapper = styled.header`
   right: 0;
   width: 100%;
   padding: 1.5rem;
+  ul {
+    display: flex;
+  }
 
   li {
     list-style: none;
   }
-  button {
+  li:nth-of-type(1) {
     margin-left: auto;
+    margin-right: 1rem;
+  }
+
+  button {
+    margin: 0;
   }
 `;
 
 const Navigation = () => {
+  const { setIsOpen }: any = useContext(ModalContext);
   const logoutHandler = () => {
     doSignOut();
   };
@@ -29,9 +39,12 @@ const Navigation = () => {
       <nav>
         <ul>
           <li>
-            <Button primary onClick={logoutHandler}>
-              Wyloguj
+            <Button primary onClick={() => setIsOpen(true)}>
+              Dodaj
             </Button>
+          </li>
+          <li>
+            <Button onClick={logoutHandler}>Wyloguj</Button>
           </li>
         </ul>
       </nav>

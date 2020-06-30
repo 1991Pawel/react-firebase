@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { CollectionItem } from '../types/types';
 import BinIcon from '../assets/bin.svg';
 import TickIcon from '../assets/tick.svg';
 
-const ListItemWrapper = styled.li`
+const ListItemWrapper = styled.li<{ isDone: boolean }>`
   position: relative;
   margin: 1rem 0;
   padding: 1rem 0.5rem;
@@ -14,6 +14,11 @@ const ListItemWrapper = styled.li`
   display: grid;
   grid-template-columns: 1fr 0.5fr;
   grid-template-rows: 1fr min-content;
+  ${({ isDone }) =>
+    isDone &&
+    css`
+      background-color: #b4ffcf;
+    `};
 `;
 const ListItemContent = styled.h3`
   margin: 1rem 0;
@@ -35,9 +40,14 @@ const ListItemButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  transition: 0.2s opacity;
 
   &:last-of-type {
     margin-left: 0.6rem;
+  }
+
+  &:hover {
+    opacity: 0.7;
   }
 
   img {
@@ -46,6 +56,9 @@ const ListItemButton = styled.button`
   }
 `;
 const ListItemData = styled.div`
+  font-size: 0.7rem;
+  font-weight: ${({ theme }) => theme.fontWeight.semi};
+  color: ${({ theme }) => theme.colors.dark};
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
 `;
@@ -61,28 +74,37 @@ const ListItemStatus = styled.span`
 `;
 
 interface Item {
-  item: CollectionItem;
+  // item: CollectionItem;
+  item: any;
   removeItem: () => void;
   key: string;
 }
 
-const ListItem = ({ removeItem, item }: Item) => (
-  <ListItemWrapper key={item.id}>
-    <ListItemContent>{item.title}</ListItemContent>
-    <ListItemData>
-      <span> 21/03/2020 15:12</span>
-    </ListItemData>
-    <ButtonWrapper>
-      <ListItemButton type="button" onClick={removeItem}>
-        <img src={TickIcon} alt="" />
-      </ListItemButton>
-      <ListItemButton type="button" onClick={removeItem}>
-        <img src={BinIcon} alt="" />
-      </ListItemButton>
-    </ButtonWrapper>
+const ListItem = ({ doneItem, removeItem, item }: any) => {
+  const today = new Date(item.createdAt.seconds * 1000);
+  const data = new Intl.DateTimeFormat('pl').format(today);
+  const hours = today.getHours();
+  const minutes = today.getMinutes();
+  const time = `${hours}:${minutes}`;
 
-    <ListItemStatus>Zrobione</ListItemStatus>
-  </ListItemWrapper>
-);
+  return (
+    <ListItemWrapper isDone={item.isDone} key={item.id}>
+      <ListItemContent>{item.title}</ListItemContent>
+      <ListItemData>
+        {time}
+        <span> {data}</span>
+      </ListItemData>
+      <ButtonWrapper>
+        <ListItemButton type="button" onClick={doneItem}>
+          <img src={TickIcon} alt="" />
+        </ListItemButton>
+        <ListItemButton type="button" onClick={removeItem}>
+          <img src={BinIcon} alt="" />
+        </ListItemButton>
+      </ButtonWrapper>
+      <ListItemStatus>{item.isDone ? 'Zrobione' : 'Aktywne'}</ListItemStatus>
+    </ListItemWrapper>
+  );
+};
 
 export default ListItem;

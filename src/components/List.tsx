@@ -16,6 +16,12 @@ const List = () => {
   const removeItem = (id: string) => {
     db.collection('projects').doc(id).delete();
   };
+  const doneItem = (id: string) => {
+    db.collection('projects').doc(id).update({
+      isDone: true,
+    });
+  };
+
   useEffect(() => {
     setPosts(data);
   }, [data]);
@@ -29,6 +35,7 @@ const List = () => {
               removeItem={() => removeItem(item.id)}
               key={item.id}
               item={item}
+              doneItem={() => doneItem(item.id)}
             />
           ))}
       </ListWrapper>

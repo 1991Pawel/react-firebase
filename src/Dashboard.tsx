@@ -1,15 +1,15 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { db } from './firebase/firebase';
-import { useCurrentUser } from './hook/useCurrentUser';
 import List from './components/List';
 import Navigation from './components/Navigation';
-import SideBar from './components/SideBar';
+import AddTaskModal from './components/AddTaskModal';
+import { ModalContext } from './context/modalContext';
 
 const DashBoardWrapper = styled.div`
   display: flex;
   background: #fbfbfb;
+  height: 100vh;
 `;
 
 const WrapperHeader = styled.header`
@@ -36,49 +36,16 @@ const DashBoardContentWrapper = styled.div`
 `;
 
 const Home = () => {
-  const [project, setProject] = useState('');
-  const [error, setError] = useState(false);
-  const context = useCurrentUser();
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (project.trim().length) {
-      db.collection('projects').add({
-        title: project,
-        isDone: false,
-        userId: context?.uid,
-        createdAt: new Date(),
-      });
-      setError(false);
-    } else {
-      setError(true);
-    }
-    setProject('');
-  };
-
+  const { isOpen, setIsOpen }: any = useContext(ModalContext);
   return (
     <>
       <Navigation />
       <DashBoardWrapper>
-        {/* <SideBar /> */}
+        {isOpen && <AddTaskModal />}
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>zadania</h3>
-            <div>
-              NIEDZIELA
-              <span>28.06.2020</span>
-            </div>
           </WrapperHeader>
-          <h2>Add</h2>
-          {error && <p>input is empty</p>}
-          <form className="home__form" onSubmit={(e) => onSubmit(e)}>
-            <input
-              value={project}
-              onChange={(e) => setProject(e.target.value)}
-              type="text"
-            />
-            <button type="submit">Send</button>
-          </form>
           <List />
         </DashBoardContentWrapper>
       </DashBoardWrapper>
