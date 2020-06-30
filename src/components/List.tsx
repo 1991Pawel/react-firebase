@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import ListItem from './ListItem';
 import { useCollection } from '../hook/useCollection';
 import { CollectionItem } from '../types/types';
 import { db } from '../firebase/firebase';
+
+const ListWrapper = styled.ul`
+  margin-top: 2rem;
+`;
 
 const List = () => {
   const data = useCollection('projects');
@@ -17,7 +22,7 @@ const List = () => {
 
   return (
     <>
-      <ul className="list">
+      <ListWrapper>
         {posts &&
           posts.map((item) => (
             <ListItem
@@ -26,7 +31,7 @@ const List = () => {
               item={item}
             />
           ))}
-      </ul>
+      </ListWrapper>
     </>
   );
 };

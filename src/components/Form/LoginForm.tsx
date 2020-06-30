@@ -44,7 +44,7 @@ const LoginForm = ({ setHaveAccount }: Form) => {
     <WrapperForm>
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       <WrapperInput>
-        <label htmlFor="email">Email Adress</label>
+        <label htmlFor="email">Adres Email</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
           id="email"
@@ -52,7 +52,7 @@ const LoginForm = ({ setHaveAccount }: Form) => {
           type="text"
           value={email}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Hasło</label>
         <input
           onChange={(e) => setPassword(e.target.value)}
           id="password"
@@ -68,9 +68,9 @@ const LoginForm = ({ setHaveAccount }: Form) => {
         </Button>
         <AccountMessage>
           <button onClick={() => setHaveAccount(false)} type="button">
-            Zarejestruj
+            Zarejestruj się
           </button>
-          się jeśli nie posiadasz konta
+          jeśli nie posiadasz konta
         </AccountMessage>
       </FormFooter>
     </WrapperForm>
