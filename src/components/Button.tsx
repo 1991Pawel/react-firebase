@@ -10,8 +10,13 @@ const StyledButton = styled.button<{ primary?: boolean }>`
   color: ${({ theme }) => theme.colors.primary};
   background: ${({ theme }) => theme.colors.light};
   font-weight: ${({ theme }) => theme.fontWeight.semi};
-  margin-right: 2rem;
   border: 1px solid ${({ theme }) => theme.colors.primary};
+
+  margin-right: 2rem;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    opacity: 0.9;
+  }
   cursor: pointer;
   ${({ primary, theme }) =>
     primary &&

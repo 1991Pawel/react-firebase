@@ -68,9 +68,9 @@ const LoginForm = ({ setHaveAccount }: Form) => {
         </Button>
         <AccountMessage>
           <button onClick={() => setHaveAccount(false)} type="button">
-            Zarejestruj
+            Zarejestruj się
           </button>
-          się jeśli nie posiadasz konta
+          jeśli nie posiadasz konta
         </AccountMessage>
       </FormFooter>
     </WrapperForm>

@@ -55,6 +55,9 @@ const AccountMessage = styled.p`
     border: none;
     margin-right: 0.2rem;
   }
+  button:hover {
+    opacity: 0.9;
+  }
 `;
 
 export { AccountMessage, FormFooter, WrapperInput, WrapperForm, ErrorMessage };
