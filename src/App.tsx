@@ -7,17 +7,20 @@ import Welcome from './Welcome';
 import Dashboard from './Dashboard';
 import PrivateRoute from './PrivateRoute';
 import GlobalStyle from './GlobalStyles/GlobalStyles';
+import { ModalProvider } from './context/modalContext';
 
 function App() {
   return (
     <AuthProvider>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Router>
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/" component={Welcome} />
-        </Router>
-      </ThemeProvider>
+      <ModalProvider>
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Router>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/" component={Welcome} />
+          </Router>
+        </ThemeProvider>
+      </ModalProvider>
     </AuthProvider>
   );
 }
