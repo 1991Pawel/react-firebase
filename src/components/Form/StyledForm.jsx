@@ -36,6 +36,14 @@ const FormFooter = styled.div`
   align-items: center;
   margin-top: 2rem;
 `;
+const ErrorMessage = styled.p`
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.colors.light};
+  margin: 1rem 0;
+  font-weight: ${({ theme }) => theme.fontWeight.semi};
+  background: red;
+  padding: 0.5rem;
+`;
 const AccountMessage = styled.p`
   margin: 1rem 0;
   font-size: 0.8rem;
@@ -49,4 +57,4 @@ const AccountMessage = styled.p`
   }
 `;
 
-export { AccountMessage, FormFooter, WrapperInput, WrapperForm };
+export { AccountMessage, FormFooter, WrapperInput, WrapperForm, ErrorMessage };

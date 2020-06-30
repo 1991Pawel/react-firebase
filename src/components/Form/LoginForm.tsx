@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-
+import { Form } from '../../types/types';
 import Button from '../Button';
 import { doSignInWithEmailAndPassword } from '../../firebase/auth';
 import {
@@ -8,12 +8,11 @@ import {
   FormFooter,
   WrapperInput,
   WrapperForm,
+  ErrorMessage,
 } from './StyledForm';
 import { useForm } from '../../hook/useForm';
 
-type FirebaseError = firebase.auth.Error | boolean;
-
-const LoginForm = ({ setHaveAccount }: any) => {
+const LoginForm = ({ setHaveAccount }: Form) => {
   const {
     email,
     setEmail,
@@ -22,9 +21,11 @@ const LoginForm = ({ setHaveAccount }: any) => {
     history,
     error,
     setError,
+    setErrorMessage,
+    errorMessage,
   } = useForm();
 
-  const loginHandler = async (event: any) => {
+  const loginHandler = async (event: MouseEvent) => {
     event.preventDefault();
 
     try {
@@ -34,15 +35,15 @@ const LoginForm = ({ setHaveAccount }: any) => {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);
-
+      setErrorMessage(err.message);
       setError(true);
     }
   };
 
   return (
     <WrapperForm>
+      {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       <WrapperInput>
-        {error && 'błąd logowania'}
         <label htmlFor="email">Email Adress</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
@@ -60,6 +61,7 @@ const LoginForm = ({ setHaveAccount }: any) => {
           value={password}
         />
       </WrapperInput>
+
       <FormFooter>
         <Button onClick={loginHandler} primary>
           Zaloguj

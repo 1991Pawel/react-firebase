@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FirebaseError } from '../types/types';
 
-type FirebaseError = firebase.auth.Error | boolean;
 export const useForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
   const [error, setError] = useState<FirebaseError>(false);
+  const [errorMessage, setErrorMessage] = useState('');
   return {
     email,
     setEmail,
@@ -15,5 +16,7 @@ export const useForm = () => {
     history,
     error,
     setError,
+    errorMessage,
+    setErrorMessage,
   };
 };

@@ -7,4 +7,8 @@ export interface CollectionItem {
   name: string;
   height: string;
 }
+export interface Form {
+  setHaveAccount: React.Dispatch<React.SetStateAction<boolean>>;
+}
 export type FirebaseUser = firebase.User | null;
+export type FirebaseError = firebase.auth.Error | boolean;

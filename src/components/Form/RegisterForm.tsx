@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { Form } from '../../types/types';
+
 import Button from '../Button';
 import { doCreateUserWithEmailAndPassword } from '../../firebase/auth';
 import {
@@ -7,12 +9,11 @@ import {
   FormFooter,
   WrapperInput,
   WrapperForm,
+  ErrorMessage,
 } from './StyledForm';
 import { useForm } from '../../hook/useForm';
 
-type FirebaseError = firebase.auth.Error | boolean;
-
-const RegisterForm = ({ setHaveAccount }: any) => {
+const RegisterForm = ({ setHaveAccount }: Form) => {
   const {
     email,
     setEmail,
@@ -21,15 +22,18 @@ const RegisterForm = ({ setHaveAccount }: any) => {
     history,
     error,
     setError,
+    setErrorMessage,
+    errorMessage,
   } = useForm();
 
-  const handleSignUp = async (event: any) => {
+  const handleSignUp = async (event: MouseEvent) => {
     event.preventDefault();
     try {
       await doCreateUserWithEmailAndPassword(email, password);
       history.push('/dashboard');
       setError(false);
     } catch (err) {
+      setErrorMessage(err.message);
       setError(true);
     }
   };
@@ -37,7 +41,7 @@ const RegisterForm = ({ setHaveAccount }: any) => {
   return (
     <WrapperForm>
       <WrapperInput>
-        {error && 'błąd rejestracji konta'}
+        {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <label htmlFor="email">Email Adress</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
@@ -56,7 +60,7 @@ const RegisterForm = ({ setHaveAccount }: any) => {
         />
       </WrapperInput>
       <FormFooter>
-        <Button onClick={(e: any) => handleSignUp(e)} primary>
+        <Button onClick={(e: MouseEvent) => handleSignUp(e)} primary>
           Zarejestruj
         </Button>
         <AccountMessage>
