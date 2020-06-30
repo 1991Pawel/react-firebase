@@ -76,7 +76,6 @@ const Welcome = () => {
 
   return (
     <WelcomeWrapper>
-      {console.log('render check')}
       <WelcomeContentWrapper>
         <header>
           <Logo>YourTask</Logo>
