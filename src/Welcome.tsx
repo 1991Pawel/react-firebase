@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/Form/LoginForm';
+import RegisterForm from './components/Form/RegisterForm';
 import BackgroundWelcome from './assets/welcomeBg.svg';
 import welcomeImg from './assets/welcomeImg.svg';
 
