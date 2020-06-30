@@ -9,6 +9,7 @@ import SideBar from './components/SideBar';
 
 const DashBoardWrapper = styled.div`
   display: flex;
+  background: #fbfbfb;
 `;
 
 const WrapperHeader = styled.header`
@@ -44,8 +45,9 @@ const Home = () => {
     if (project.trim().length) {
       db.collection('projects').add({
         title: project,
-        city: 'any',
+        isDone: false,
         userId: context?.uid,
+        createdAt: new Date(),
       });
       setError(false);
     } else {
@@ -58,7 +60,7 @@ const Home = () => {
     <>
       <Navigation />
       <DashBoardWrapper>
-        <SideBar />
+        {/* <SideBar /> */}
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>zadania</h3>

@@ -32,6 +32,7 @@ const WelcomeContentWrapper = styled.div`
   width: 100%;
   display: flex;
   padding: 1rem;
+
   header {
     margin: 0 auto;
   }

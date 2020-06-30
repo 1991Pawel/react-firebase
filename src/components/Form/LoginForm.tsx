@@ -44,7 +44,7 @@ const LoginForm = ({ setHaveAccount }: Form) => {
     <WrapperForm>
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       <WrapperInput>
-        <label htmlFor="email">Email Adress</label>
+        <label htmlFor="email">Adres Email</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
           id="email"
