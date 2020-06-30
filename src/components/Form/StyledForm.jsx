@@ -56,7 +56,7 @@ const AccountMessage = styled.p`
     margin-right: 0.2rem;
   }
   button:hover {
-    opacity: 0.9;
+    opacity: 0.8;
   }
 `;
 

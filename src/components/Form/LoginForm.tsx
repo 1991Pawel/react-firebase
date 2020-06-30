@@ -52,7 +52,7 @@ const LoginForm = ({ setHaveAccount }: Form) => {
           type="text"
           value={email}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Hasło</label>
         <input
           onChange={(e) => setPassword(e.target.value)}
           id="password"

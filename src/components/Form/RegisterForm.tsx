@@ -42,7 +42,7 @@ const RegisterForm = ({ setHaveAccount }: Form) => {
     <WrapperForm>
       <WrapperInput>
         {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        <label htmlFor="email">Email Adress</label>
+        <label htmlFor="email">Adres Email</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
           id="email"
@@ -50,7 +50,7 @@ const RegisterForm = ({ setHaveAccount }: Form) => {
           type="text"
           value={email}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Hasło</label>
         <input
           onChange={(e) => setPassword(e.target.value)}
           id="password"
