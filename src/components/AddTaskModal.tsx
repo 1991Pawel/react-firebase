@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { db } from '../firebase/firebase';
 import { useCurrentUser } from '../hook/useCurrentUser';
@@ -57,6 +57,27 @@ const AddTaskModal = () => {
   const [project, setProject] = useState('');
   const [error, setError] = useState(false);
   const context = useCurrentUser();
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const checkIfClickOutside = (e: any): any => {
+      if (e.target == wrapperRef.current) {
+        closeModalHandler();
+      }
+    };
+
+    if (wrapperRef.current !== null) {
+      wrapperRef.current.addEventListener('click', (e) =>
+        checkIfClickOutside(e)
+      );
+    }
+
+    return () => {
+      wrapperRef.current?.removeEventListener('click', (e) =>
+        checkIfClickOutside(e)
+      );
+    };
+  }, [wrapperRef]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -80,7 +101,7 @@ const AddTaskModal = () => {
   };
 
   return (
-    <ModalWrapper>
+    <ModalWrapper ref={wrapperRef}>
       <Modal>
         <ModalHeading>Zadanie:</ModalHeading>
         {error && <ModalMessage>input is empty</ModalMessage>}

@@ -5,6 +5,16 @@ const WrapperForm = styled.form`
   display: flex;
   flex-direction: column;
 `;
+
+const FormHeading = styled.h3`
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: ${({ theme }) => theme.colors.dark};
+  @media only screen and (min-width: 600px) {
+    font-size: 1.2rem;
+  }
+`;
+
 const WrapperInput = styled.div`
   display: flex;
   flex-direction: column;
@@ -70,4 +80,11 @@ const AccountMessage = styled.div`
   }
 `;
 
-export { AccountMessage, FormFooter, WrapperInput, WrapperForm, ErrorMessage };
+export {
+  AccountMessage,
+  FormFooter,
+  WrapperInput,
+  WrapperForm,
+  ErrorMessage,
+  FormHeading,
+};
