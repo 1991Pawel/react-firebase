@@ -19,6 +19,7 @@ const WrapperInput = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 2px ${({ theme }) => theme.colors.lightGrey};
+
   padding: 1rem;
 
   label {
@@ -35,6 +36,7 @@ const WrapperInput = styled.div`
     padding: 0.5rem;
     color: ${({ theme }) => theme.colors.primary};
     border: none;
+    border-bottom: 1px solid #ccc;
     box-shadow: 0px 0px 2px ${({ theme }) => theme.colors.lightGrey};
     outline: none;
   }
