@@ -14,6 +14,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+input {
+  font-size:1rem;
+}
+
 
 `;
 
