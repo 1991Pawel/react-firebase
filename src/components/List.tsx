@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ListItem from './ListItem';
 import { useCollection } from '../hook/useCollection';
 import { CollectionItem } from '../types/types';
@@ -15,11 +17,19 @@ const List = () => {
 
   const removeItem = (id: string) => {
     db.collection('projects').doc(id).delete();
+    toast.error('Zadanie zostało usuniete', {
+      position: 'bottom-right',
+    });
   };
   const doneItem = (item: CollectionItem) => {
     db.collection('projects').doc(item.id).update({
       isDone: !item.isDone,
     });
+    if (!item.isDone) {
+      toast.success('Zadanie wykonane', {
+        position: 'bottom-right',
+      });
+    }
   };
 
   useEffect(() => {
@@ -27,7 +37,20 @@ const List = () => {
   }, [data]);
 
   return (
-    <>
+    <div>
+      <ToastContainer
+        style={{ fontSize: '.8rem' }}
+        position="bottom-center"
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={2}
+      />
       <ListWrapper>
         {posts &&
           posts.map((item) => (
@@ -39,7 +62,7 @@ const List = () => {
             />
           ))}
       </ListWrapper>
-    </>
+    </div>
   );
 };
 

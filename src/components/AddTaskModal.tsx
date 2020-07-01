@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { db } from '../firebase/firebase';
 import { useCurrentUser } from '../hook/useCurrentUser';
 import Button from './Button';
 import { useModalContext } from '../hook/useModalContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -73,6 +75,9 @@ const AddTaskModal = () => {
         isDone: false,
         userId: context?.uid,
         createdAt: new Date(),
+      });
+      toast.info('Zadanie zostało dodane', {
+        position: 'bottom-right',
       });
       setError(false);
       setIsOpen(false);
