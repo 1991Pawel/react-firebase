@@ -16,9 +16,9 @@ const List = () => {
   const removeItem = (id: string) => {
     db.collection('projects').doc(id).delete();
   };
-  const doneItem = (id: string) => {
-    db.collection('projects').doc(id).update({
-      isDone: true,
+  const doneItem = (item: CollectionItem) => {
+    db.collection('projects').doc(item.id).update({
+      isDone: !item.isDone,
     });
   };
 
@@ -35,7 +35,7 @@ const List = () => {
               removeItem={() => removeItem(item.id)}
               key={item.id}
               item={item}
-              doneItem={() => doneItem(item.id)}
+              doneItem={() => doneItem(item)}
             />
           ))}
       </ListWrapper>
