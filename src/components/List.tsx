@@ -22,13 +22,12 @@ const List = () => {
     });
   };
   const doneItem = (item: CollectionItem) => {
-    db.collection('projects').doc(item.id).update({
-      isDone: !item.isDone,
-    });
-    if (!item.isDone) {
-      toast.success('Zadanie wykonane', {
-        position: 'bottom-right',
+    try {
+      db.collection('projects').doc(item.id).update({
+        isDone: !item.isDone,
       });
+    } catch (err) {
+      console.log(err);
     }
   };
 
