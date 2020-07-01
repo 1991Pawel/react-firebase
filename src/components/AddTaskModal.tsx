@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ModalContext } from '../context/modalContext';
 import { db } from '../firebase/firebase';
 import { useCurrentUser } from '../hook/useCurrentUser';
 import Button from './Button';
+import { useModalContext } from '../hook/useModalContext';
 
 const ModalWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -51,13 +51,9 @@ const ModalButtonGroup = styled.div`
     margin-right: 0;
   }
 `;
-interface ModalProps {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const AddTaskModal = () => {
-  const { isOpen, setIsOpen }: any = useContext(ModalContext);
+  const { setIsOpen } = useModalContext();
   const [project, setProject] = useState('');
   const [error, setError] = useState(false);
   const context = useCurrentUser();

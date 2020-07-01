@@ -29,7 +29,7 @@ const HeaderWrapper = styled.header`
 `;
 
 const Navigation = () => {
-  const { setIsOpen }: any = useContext(ModalContext);
+  const { setIsOpen } = useContext(ModalContext);
   const logoutHandler = () => {
     doSignOut();
   };

@@ -1,15 +1,16 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import List from './components/List';
 import Navigation from './components/Navigation';
 import AddTaskModal from './components/AddTaskModal';
-import { ModalContext } from './context/modalContext';
+import { useModalContext } from './hook/useModalContext';
 
-const DashBoardWrapper = styled.div`
+const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   display: flex;
   background: #fbfbfb;
   height: 100vh;
+  overflow: ${(props) => (props.isNotScrollable ? 'hidden' : 'none')};
 `;
 
 const WrapperHeader = styled.header`
@@ -36,12 +37,12 @@ const DashBoardContentWrapper = styled.div`
 `;
 
 const Home = () => {
-  const { isOpen, setIsOpen }: any = useContext(ModalContext);
+  const { isOpen } = useModalContext();
   return (
     <>
       <Navigation />
-      <DashBoardWrapper>
-        {isOpen && <AddTaskModal />}
+      {isOpen && <AddTaskModal />}
+      <DashBoardWrapper isNotScrollable={isOpen}>
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>zadania</h3>
