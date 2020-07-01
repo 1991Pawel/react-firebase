@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { CollectionItem } from '../types/types';
 import BinIcon from '../assets/bin.svg';
 import TickIcon from '../assets/tick.svg';
+import { CollectionItem } from '../types/types';
 
 const ListItemWrapper = styled.li<{ isDone: boolean }>`
   position: relative;
@@ -74,13 +74,13 @@ const ListItemStatus = styled.span`
 `;
 
 interface Item {
-  // item: CollectionItem;
-  item: any;
+  item: CollectionItem;
   removeItem: () => void;
+  doneItem: () => void;
   key: string;
 }
 
-const ListItem = ({ doneItem, removeItem, item }: any) => {
+const ListItem = ({ doneItem, removeItem, item }: Item) => {
   const today = new Date(item.createdAt.seconds * 1000);
   const data = new Intl.DateTimeFormat('pl').format(today);
   const hours = today.getHours();

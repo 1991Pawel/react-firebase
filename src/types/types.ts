@@ -1,12 +1,13 @@
+export type TimeStamps = firebase.firestore.Timestamp;
+
 export interface CollectionItem {
-  weight: string;
   id: string;
-  city?: string;
   title: string;
-  userId?: string;
-  name: string;
-  height: string;
+  userId: string;
+  createdAt: TimeStamps;
+  isDone: boolean;
 }
+
 export interface Form {
   setHaveAccount: React.Dispatch<React.SetStateAction<boolean>>;
 }
