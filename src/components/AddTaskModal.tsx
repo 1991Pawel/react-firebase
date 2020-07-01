@@ -97,6 +97,8 @@ const AddTaskModal = () => {
             onChange={(e) => setProject(e.target.value)}
             type="text"
             maxLength={80}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
           />
         </ModalForm>
         <ModalButtonGroup>
