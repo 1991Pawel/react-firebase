@@ -10,7 +10,7 @@ const HeaderWrapper = styled.header`
   left: 0;
   right: 0;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.5rem 5rem;
   ul {
     display: flex;
   }

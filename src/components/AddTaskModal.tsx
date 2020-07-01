@@ -68,6 +68,7 @@ const AddTaskModal = () => {
         createdAt: new Date(),
       });
       setError(false);
+      setIsOpen(false);
     } else {
       setError(true);
     }

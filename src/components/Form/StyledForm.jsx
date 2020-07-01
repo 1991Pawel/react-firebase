@@ -32,9 +32,19 @@ const WrapperInput = styled.div`
 
 const FormFooter = styled.div`
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   margin-top: 2rem;
+  @media only screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    button {
+      width: 100%;
+      margin: 0;
+    }
+    div {
+      text-align: center;
+      width: 100%;
+    }
+  }
 `;
 const ErrorMessage = styled.p`
   font-size: 0.8rem;
@@ -44,7 +54,7 @@ const ErrorMessage = styled.p`
   background: red;
   padding: 0.5rem;
 `;
-const AccountMessage = styled.p`
+const AccountMessage = styled.div`
   margin: 1rem 0;
   font-size: 0.8rem;
   button {
