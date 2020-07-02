@@ -1,7 +1,6 @@
 /* eslint-disable react/button-has-type */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useMediaQuery } from 'react-responsive';
 import List from './components/List';
 import Navigation from './components/Navigation';
 import AddTaskModal from './components/AddTaskModal';
@@ -12,7 +11,6 @@ const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   display: flex;
   background: #fbfbfb;
   min-height: 100vh;
-  border: 1px solid red;
   overflow: ${(props) => (props.isNotScrollable ? 'hidden' : 'none')};
 `;
 
@@ -40,28 +38,22 @@ const DashBoardContentWrapper = styled.div`
   @media only screen and (min-width: 600px) {
     padding: 1.5rem 5rem;
   }
+  @media only screen and (min-width: 800px) {
+    width: calc(100% - 300px);
+    margin-left: auto;
+  }
 `;
 
 const Home = () => {
   const { isOpen } = useModalContext();
   const [show, setShow] = useState(false);
 
-  const isSmallDevice = useMediaQuery({ query: '(max-width: 800px)' });
-
-  useEffect(() => {
-    if (!isSmallDevice) {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
-  }, [isSmallDevice]);
-
   return (
     <>
       <Navigation show={show} setShow={setShow} />
       {isOpen && <AddTaskModal />}
       <DashBoardWrapper isNotScrollable={isOpen}>
-        <Sidebar isSmallDevice={isSmallDevice} show={show} setShow={setShow} />
+        <Sidebar show={show} setShow={setShow} />
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>Zadania</h3>
