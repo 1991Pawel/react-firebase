@@ -7,6 +7,10 @@ export interface CollectionItem {
   createdAt: TimeStamps;
   isDone: boolean;
 }
+export interface SideBarToggle {
+  show: boolean;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export interface Form {
   setHaveAccount: React.Dispatch<React.SetStateAction<boolean>>;
