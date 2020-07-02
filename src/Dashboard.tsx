@@ -38,7 +38,7 @@ const DashBoardContentWrapper = styled.div`
   @media only screen and (min-width: 600px) {
     padding: 1.5rem 5rem;
   }
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 801px) {
     width: calc(100% - 300px);
     margin-left: auto;
   }

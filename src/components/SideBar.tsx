@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SideBarToggle } from '../types/types';
+import Logo from './Logo/Logo';
 
 const SideBarWrapper = styled.div<{ show?: boolean }>`
   position: fixed;
@@ -11,13 +12,13 @@ const SideBarWrapper = styled.div<{ show?: boolean }>`
   width: 300px;
   background: #fff;
   box-shadow: 2px 2px 2px #ccc;
-  transition: 0.2s ease-in-out transform;
+
   padding: 1rem;
   height: 100%;
 
   @media only screen and (max-width: 800px) {
-    background: red;
     transform: translateX(-300px);
+    transition: 0.2s ease-in-out transform;
   }
   ${({ show }) =>
     show &&
@@ -31,6 +32,7 @@ const SideBarWrapper = styled.div<{ show?: boolean }>`
 const SideBar = ({ show, setShow }: SideBarToggle) => {
   return (
     <SideBarWrapper show={show}>
+      <Logo>yourTask</Logo>
       <button type="button" onClick={() => setShow(false)}>
         X
       </button>
