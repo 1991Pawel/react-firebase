@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { SideBarToggle } from '../types/types';
 
-const SideBarWrapper = styled.div<{ isSmallDevice?: boolean; show?: boolean }>`
+const SideBarWrapper = styled.div<{ show?: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -11,27 +11,29 @@ const SideBarWrapper = styled.div<{ isSmallDevice?: boolean; show?: boolean }>`
   width: 300px;
   background: #fff;
   box-shadow: 2px 2px 2px #ccc;
-  transform: translateX(-100%);
   transition: 0.2s ease-in-out transform;
   padding: 1rem;
+  height: 100%;
 
+  @media only screen and (max-width: 800px) {
+    background: red;
+    transform: translateX(-300px);
+  }
   ${({ show }) =>
     show &&
     css`
-      transform: translateX(0%);
-      @media only screen and (min-width: 800px) {
-        position: ${(isSmallDevice) => (isSmallDevice ? 'static' : 'fixed')};
+      @media only screen and (max-width: 800px) {
+        transform: translateX(0px);
       }
     `};
 `;
 
-const SideBar = ({ show, setShow, isSmallDevice }: SideBarToggle) => {
+const SideBar = ({ show, setShow }: SideBarToggle) => {
   return (
-    <SideBarWrapper isSmallDevice={isSmallDevice} show={show}>
+    <SideBarWrapper show={show}>
       <button type="button" onClick={() => setShow(false)}>
         X
       </button>
-      sidebar{JSON.stringify(show)}
     </SideBarWrapper>
   );
 };
