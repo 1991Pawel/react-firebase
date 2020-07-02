@@ -11,7 +11,8 @@ import Sidebar from './components/SideBar';
 const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   display: flex;
   background: #fbfbfb;
-  height: 100%;
+  min-height: 100vh;
+  border: 1px solid red;
   overflow: ${(props) => (props.isNotScrollable ? 'hidden' : 'none')};
 `;
 

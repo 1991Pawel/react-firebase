@@ -13,6 +13,7 @@ const SideBarWrapper = styled.div<{ isSmallDevice?: boolean; show?: boolean }>`
   box-shadow: 2px 2px 2px #ccc;
   transform: translateX(-100%);
   transition: 0.2s ease-in-out transform;
+  padding: 1rem;
 
   ${({ show }) =>
     show &&
