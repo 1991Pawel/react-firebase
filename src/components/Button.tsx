@@ -28,6 +28,8 @@ const StyledButton = styled.button<{ primary?: boolean }>`
     `};
 `;
 
+// fix type
+console.log('pamietac');
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: any;

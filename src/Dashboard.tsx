@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 import List from './components/List';
 import Navigation from './components/Navigation';
 import AddTaskModal from './components/AddTaskModal';
@@ -43,13 +44,23 @@ const DashBoardContentWrapper = styled.div`
 const Home = () => {
   const { isOpen } = useModalContext();
   const [show, setShow] = useState(false);
+
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 800px)' });
+
+  useEffect(() => {
+    if (!isSmallDevice) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }, [isSmallDevice]);
+
   return (
     <>
       <Navigation show={show} setShow={setShow} />
-
       {isOpen && <AddTaskModal />}
       <DashBoardWrapper isNotScrollable={isOpen}>
-        <Sidebar show={show} setShow={setShow} />
+        <Sidebar isSmallDevice={isSmallDevice} show={show} setShow={setShow} />
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>Zadania</h3>

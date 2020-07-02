@@ -10,6 +10,7 @@ export interface CollectionItem {
 export interface SideBarToggle {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  isSmallDevice?: boolean;
 }
 
 export interface Form {
