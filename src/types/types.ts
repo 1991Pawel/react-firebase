@@ -8,9 +8,12 @@ export interface CollectionItem {
   isDone: boolean;
 }
 export interface SideBarToggle {
-  show: boolean;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
-  isSmallDevice?: boolean;
+  showSideBar: boolean;
+  setShowSideBar: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export interface Nav {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowSideBar: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface Form {

@@ -55,14 +55,14 @@ const ModalButtonGroup = styled.div`
 `;
 
 const AddTaskModal = () => {
-  const { setIsOpen } = useModalContext();
+  const { setModalOpen } = useModalContext();
   const [project, setProject] = useState('');
   const [error, setError] = useState(false);
   const context = useCurrentUser();
 
   const handleHide = (e: React.SyntheticEvent) => {
     if (e.target === e.currentTarget) {
-      setIsOpen(false);
+      setModalOpen(false);
     }
   };
 
@@ -80,7 +80,7 @@ const AddTaskModal = () => {
         position: 'bottom-right',
       });
       setError(false);
-      setIsOpen(false);
+      setModalOpen(false);
     } else {
       setError(true);
     }
@@ -88,7 +88,7 @@ const AddTaskModal = () => {
   };
 
   const closeModalHandler = () => {
-    setIsOpen(false);
+    setModalOpen(false);
   };
 
   return (

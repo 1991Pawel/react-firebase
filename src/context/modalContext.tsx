@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 
+// zainportowac z types
 interface ModalContextInterface {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalOpen: boolean;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ModalContext = React.createContext<ModalContextInterface>({
-  isOpen: false,
-  setIsOpen: () => {},
+  isModalOpen: false,
+  setModalOpen: () => {},
 });
 
 export const ModalProvider: React.FC = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   return (
-    <ModalContext.Provider value={{ isOpen, setIsOpen }}>
+    <ModalContext.Provider value={{ isModalOpen, setModalOpen }}>
       {children}
     </ModalContext.Provider>
   );

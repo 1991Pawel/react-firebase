@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { SideBarToggle } from '../types/types';
 import Logo from './Logo/Logo';
 
-const SideBarWrapper = styled.div<{ show?: boolean }>`
+const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -20,8 +20,8 @@ const SideBarWrapper = styled.div<{ show?: boolean }>`
     transform: translateX(-300px);
     transition: 0.2s ease-in-out transform;
   }
-  ${({ show }) =>
-    show &&
+  ${({ showSideBar }) =>
+    showSideBar &&
     css`
       @media only screen and (max-width: 800px) {
         transform: translateX(0px);
@@ -29,11 +29,11 @@ const SideBarWrapper = styled.div<{ show?: boolean }>`
     `};
 `;
 
-const SideBar = ({ show, setShow }: SideBarToggle) => {
+const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
   return (
-    <SideBarWrapper show={show}>
+    <SideBarWrapper showSideBar={showSideBar}>
       <Logo>yourTask</Logo>
-      <button type="button" onClick={() => setShow(false)}>
+      <button type="button" onClick={() => setShowSideBar(false)}>
         X
       </button>
     </SideBarWrapper>

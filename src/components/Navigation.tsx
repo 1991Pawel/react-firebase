@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { doSignOut } from '../firebase/auth';
 import Button from './Button';
-import { ModalContext } from '../context/modalContext';
-import { SideBarToggle } from '../types/types';
+import { Nav } from '../types/types';
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -33,21 +32,20 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const Navigation = ({ setShow }: SideBarToggle) => {
-  const { setIsOpen } = useContext(ModalContext);
+const Navigation = ({ setShowSideBar, setModalOpen }: Nav) => {
   const logoutHandler = () => {
     doSignOut();
   };
 
   return (
     <HeaderWrapper>
-      <button onClick={() => setShow(true)} type="button">
+      <button onClick={() => setShowSideBar(true)} type="button">
         X
       </button>
       <nav>
         <ul>
           <li>
-            <Button primary onClick={() => setIsOpen(true)}>
+            <Button primary onClick={() => setModalOpen(true)}>
               Dodaj
             </Button>
           </li>

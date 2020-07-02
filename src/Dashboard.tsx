@@ -45,15 +45,15 @@ const DashBoardContentWrapper = styled.div`
 `;
 
 const Home = () => {
-  const { isOpen } = useModalContext();
-  const [show, setShow] = useState(false);
+  const { isModalOpen, setModalOpen } = useModalContext();
+  const [showSideBar, setShowSideBar] = useState(false);
 
   return (
     <>
-      <Navigation show={show} setShow={setShow} />
-      {isOpen && <AddTaskModal />}
-      <DashBoardWrapper isNotScrollable={isOpen}>
-        <Sidebar show={show} setShow={setShow} />
+      <Navigation setModalOpen={setModalOpen} setShowSideBar={setShowSideBar} />
+      {isModalOpen && <AddTaskModal />}
+      <DashBoardWrapper isNotScrollable={isModalOpen}>
+        <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>Zadania</h3>
