@@ -11,9 +11,12 @@ export const SideBarButton = styled.button`
   height: 2rem;
   width: 2rem;
   color: ${({ theme }) => theme.colors.light};
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-image: linear-gradient(90deg, #5c51f2, #234bcf);
   border: none;
   cursor: pointer;
+  @media only screen and (min-width: 801px) {
+    display: none;
+  }
 `;
 
 const StatisticList = styled.ul`
@@ -60,6 +63,7 @@ const StatisticBar = styled.div<{ procent?: string }>`
     bottom: 0;
     transform: ${({ procent }) => `translatex(${procent}%)`};
     background: #fff;
+    transition: 0.5s ease-in-out;
   }
 `;
 

@@ -39,13 +39,17 @@ const HeaderWrapper = styled.header`
 
 const ButtonWrapper = styled.div`
   button {
+    display: block;
     position: static;
     height: 100%;
     width: 2rem;
     font-size: 0.7rem;
-    @media only screen and (min-width: 370px) {
-      font-size: 1rem;
+    @media only screen and (min-width: 350px) {
+      font-size: 0.8rem;
       width: 3rem;
+    }
+    @media only screen and (min-width: 400px) {
+      font-size: 0.8rem;
     }
   }
 `;
