@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { SideBarToggle } from '../types/types';
 import Logo from './Logo/Logo';
+import { useTaskStatistic } from '../hook/useTaskStatistic';
 
 const StatisticList = styled.ul`
   list-style: none;
@@ -41,6 +42,8 @@ const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
 `;
 
 const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
+  const { totalTasks, doneTasks } = useTaskStatistic();
+
   return (
     <SideBarWrapper showSideBar={showSideBar}>
       <Logo>yourTask</Logo>
@@ -48,8 +51,8 @@ const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
         X
       </button>
       <StatisticList>
-        <StatisticListItem>Wszystkie Zadania: 10</StatisticListItem>
-        <StatisticListItem>Zadania Wykonane: 2</StatisticListItem>
+        <StatisticListItem>Wszystkie Zadania: {totalTasks}</StatisticListItem>
+        <StatisticListItem>Zadania Wykonane: {doneTasks}</StatisticListItem>
       </StatisticList>
     </SideBarWrapper>
   );
