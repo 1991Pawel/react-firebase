@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { doSignOut } from '../firebase/auth';
 import Button from './Button';
 import { Nav } from '../types/types';
+import { SideBarButton } from './SideBar';
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -13,6 +14,10 @@ const HeaderWrapper = styled.header`
   padding: 1rem;
   @media only screen and (min-width: 600px) {
     padding: 1.5rem 5rem;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
   }
 
   ul {
@@ -32,6 +37,19 @@ const HeaderWrapper = styled.header`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  button {
+    position: static;
+    height: 100%;
+    width: 2rem;
+    font-size: 0.7rem;
+    @media only screen and (min-width: 370px) {
+      font-size: 1rem;
+      width: 3rem;
+    }
+  }
+`;
+
 const Navigation = ({ setShowSideBar, setModalOpen }: Nav) => {
   const logoutHandler = () => {
     doSignOut();
@@ -39,10 +57,12 @@ const Navigation = ({ setShowSideBar, setModalOpen }: Nav) => {
 
   return (
     <HeaderWrapper>
-      <button onClick={() => setShowSideBar(true)} type="button">
-        X
-      </button>
       <nav>
+        <ButtonWrapper>
+          <SideBarButton onClick={() => setShowSideBar(true)} type="button">
+            Menu
+          </SideBarButton>
+        </ButtonWrapper>
         <ul>
           <li>
             <Button primary onClick={() => setModalOpen(true)}>

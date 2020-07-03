@@ -4,6 +4,18 @@ import { SideBarToggle } from '../types/types';
 import Logo from './Logo/Logo';
 import { useTaskStatistic } from '../hook/useTaskStatistic';
 
+export const SideBarButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2rem;
+  width: 2rem;
+  color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => theme.colors.primary};
+  border: none;
+  cursor: pointer;
+`;
+
 const StatisticList = styled.ul`
   list-style: none;
   margin-top: 5rem;
@@ -86,9 +98,9 @@ const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
   return (
     <SideBarWrapper showSideBar={showSideBar}>
       <Logo>yourTask</Logo>
-      <button type="button" onClick={() => setShowSideBar(false)}>
+      <SideBarButton type="button" onClick={() => setShowSideBar(false)}>
         X
-      </button>
+      </SideBarButton>
       <StatisticList>
         <StatisticListItem>
           Wszystkie Zadania <span>{totalTasks}</span>
