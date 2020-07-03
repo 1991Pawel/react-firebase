@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { auth } from '../firebase/firebase';
 import { FirebaseUser } from '../types/types';
 
@@ -7,7 +7,7 @@ interface Auth {
   loading: boolean;
 }
 
-export const AuthContext = React.createContext<Auth | null>(null);
+export const AuthContext = createContext<Auth | null>(null);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUser>(null);

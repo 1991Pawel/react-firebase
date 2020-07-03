@@ -3,6 +3,18 @@ import styled, { css } from 'styled-components';
 import { SideBarToggle } from '../types/types';
 import Logo from './Logo/Logo';
 
+const StatisticList = styled.ul`
+  list-style: none;
+  margin-top: 5rem;
+`;
+
+const StatisticListItem = styled.li`
+  font-size: 1rem;
+  font-weight: ${({ theme }) => theme.fontWeight.semi};
+  color: ${({ theme }) => theme.colors.dark};
+  margin: 1rem 0;
+`;
+
 const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
   position: fixed;
   top: 0;
@@ -12,7 +24,6 @@ const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
   width: 300px;
   background: #fff;
   box-shadow: 2px 2px 2px #ccc;
-
   padding: 1rem;
   height: 100%;
 
@@ -36,6 +47,10 @@ const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
       <button type="button" onClick={() => setShowSideBar(false)}>
         X
       </button>
+      <StatisticList>
+        <StatisticListItem>Wszystkie Zadania: 10</StatisticListItem>
+        <StatisticListItem>Zadania Wykonane: 2</StatisticListItem>
+      </StatisticList>
     </SideBarWrapper>
   );
 };

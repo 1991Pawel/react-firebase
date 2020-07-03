@@ -20,6 +20,7 @@ const ListItemWrapper = styled.li<{ isDone: boolean }>`
     isDone &&
     css`
       background-color: #b4ffcf;
+      text-decoration: line-through;
     `};
 `;
 const ListItemContent = styled.h3`

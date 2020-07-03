@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,6 +6,7 @@ import ListItem from './ListItem';
 import { useCollection } from '../hook/useCollection';
 import { CollectionItem } from '../types/types';
 import { db } from '../firebase/firebase';
+import { useTaskContext } from '../hook/useTaskContext';
 
 const ListWrapper = styled.ul`
   margin-top: 2rem;
@@ -13,8 +14,7 @@ const ListWrapper = styled.ul`
 
 const List = () => {
   const data = useCollection('projects');
-  const [posts, setPosts] = useState<CollectionItem[]>([]);
-
+  const { tasks, setTasks } = useTaskContext();
   const removeItem = (id: string) => {
     db.collection('projects').doc(id).delete();
     toast.error('Zadanie zostało usuniete', {
@@ -32,8 +32,8 @@ const List = () => {
   };
 
   useEffect(() => {
-    setPosts(data);
-  }, [data]);
+    setTasks(data);
+  }, [data, setTasks]);
 
   return (
     <div>
@@ -51,8 +51,8 @@ const List = () => {
         limit={2}
       />
       <ListWrapper>
-        {posts &&
-          posts.map((item) => (
+        {tasks &&
+          tasks.map((item: CollectionItem) => (
             <ListItem
               removeItem={() => removeItem(item.id)}
               key={item.id}
