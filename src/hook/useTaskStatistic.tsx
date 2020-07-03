@@ -1,9 +1,17 @@
+// eslint-disable-next-line import/named
 import { useTaskContext } from './useTaskContext';
+import { CollectionItem } from '../types/types';
 
 export const useTaskStatistic = () => {
   const { tasks } = useTaskContext();
-  const totalTasks = tasks?.length;
-  const doneTasks = tasks?.filter((task) => task.isDone === true).length;
-
-  return { totalTasks, doneTasks };
+  let totalTasks = 0;
+  let doneTasks = 0;
+  let procent: string = '0';
+  if (tasks !== undefined && tasks.length) {
+    totalTasks = tasks.length;
+    doneTasks = tasks.filter((task: CollectionItem) => task.isDone === true)
+      .length;
+    procent = ((doneTasks * 100) / totalTasks).toFixed();
+  }
+  return { totalTasks, doneTasks, procent };
 };
