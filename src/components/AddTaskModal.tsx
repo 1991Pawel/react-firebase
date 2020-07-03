@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ModalContext } from '../context/modalContext';
+import { toast } from 'react-toastify';
 import { db } from '../firebase/firebase';
 import { useCurrentUser } from '../hook/useCurrentUser';
 import Button from './Button';
+import { useModalContext } from '../hook/useModalContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ModalWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -51,19 +53,22 @@ const ModalButtonGroup = styled.div`
     margin-right: 0;
   }
 `;
-interface ModalProps {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const AddTaskModal = () => {
-  const { isOpen, setIsOpen }: any = useContext(ModalContext);
+  const { setModalOpen } = useModalContext();
   const [project, setProject] = useState('');
   const [error, setError] = useState(false);
   const context = useCurrentUser();
 
+  const handleHide = (e: React.SyntheticEvent) => {
+    if (e.target === e.currentTarget) {
+      setModalOpen(false);
+    }
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (project.trim().length) {
       db.collection('projects').add({
         title: project,
@@ -71,7 +76,11 @@ const AddTaskModal = () => {
         userId: context?.uid,
         createdAt: new Date(),
       });
+      toast.info('Zadanie zostało dodane', {
+        position: 'bottom-right',
+      });
       setError(false);
+      setModalOpen(false);
     } else {
       setError(true);
     }
@@ -79,11 +88,11 @@ const AddTaskModal = () => {
   };
 
   const closeModalHandler = () => {
-    setIsOpen(false);
+    setModalOpen(false);
   };
 
   return (
-    <ModalWrapper>
+    <ModalWrapper onClick={handleHide}>
       <Modal>
         <ModalHeading>Zadanie:</ModalHeading>
         {error && <ModalMessage>input is empty</ModalMessage>}

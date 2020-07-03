@@ -1,12 +1,21 @@
+export type TimeStamps = firebase.firestore.Timestamp;
+
 export interface CollectionItem {
-  weight: string;
   id: string;
-  city?: string;
   title: string;
-  userId?: string;
-  name: string;
-  height: string;
+  userId: string;
+  createdAt: TimeStamps;
+  isDone: boolean;
 }
+export interface SideBarToggle {
+  showSideBar: boolean;
+  setShowSideBar: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export interface Nav {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowSideBar: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export interface Form {
   setHaveAccount: React.Dispatch<React.SetStateAction<boolean>>;
 }

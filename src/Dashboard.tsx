@@ -1,22 +1,24 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import List from './components/List';
 import Navigation from './components/Navigation';
 import AddTaskModal from './components/AddTaskModal';
-import { ModalContext } from './context/modalContext';
+import { useModalContext } from './hook/useModalContext';
+import Sidebar from './components/SideBar';
 
-const DashBoardWrapper = styled.div`
+const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   display: flex;
   background: #fbfbfb;
-  height: 100vh;
+  min-height: 100vh;
+  overflow: ${(props) => (props.isNotScrollable ? 'hidden' : 'none')};
 `;
 
 const WrapperHeader = styled.header`
   border-bottom: 1px solid #d1d1d1;
   margin-top: 10rem;
   padding-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
 
@@ -32,19 +34,29 @@ const WrapperHeader = styled.header`
 
 const DashBoardContentWrapper = styled.div`
   width: 100%;
-  padding: 0 5rem;
+  padding: 1rem;
+  @media only screen and (min-width: 600px) {
+    padding: 1.5rem 5rem;
+  }
+  @media only screen and (min-width: 801px) {
+    width: calc(100% - 300px);
+    margin-left: auto;
+  }
 `;
 
 const Home = () => {
-  const { isOpen, setIsOpen }: any = useContext(ModalContext);
+  const { isModalOpen, setModalOpen } = useModalContext();
+  const [showSideBar, setShowSideBar] = useState(false);
+
   return (
     <>
-      <Navigation />
-      <DashBoardWrapper>
-        {isOpen && <AddTaskModal />}
+      <Navigation setModalOpen={setModalOpen} setShowSideBar={setShowSideBar} />
+      {isModalOpen && <AddTaskModal />}
+      <DashBoardWrapper isNotScrollable={isModalOpen}>
+        <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
         <DashBoardContentWrapper>
           <WrapperHeader>
-            <h3>zadania</h3>
+            <h3>Zadania</h3>
           </WrapperHeader>
           <List />
         </DashBoardContentWrapper>

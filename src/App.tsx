@@ -8,19 +8,22 @@ import Dashboard from './Dashboard';
 import PrivateRoute from './PrivateRoute';
 import GlobalStyle from './GlobalStyles/GlobalStyles';
 import { ModalProvider } from './context/modalContext';
+import { TaskProvider } from './context/taskContext';
 
 function App() {
   return (
     <AuthProvider>
-      <ModalProvider>
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>
-          <Router>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/" component={Welcome} />
-          </Router>
-        </ThemeProvider>
-      </ModalProvider>
+      <TaskProvider>
+        <ModalProvider>
+          <GlobalStyle />
+          <ThemeProvider theme={theme}>
+            <Router>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/" component={Welcome} />
+            </Router>
+          </ThemeProvider>
+        </ModalProvider>
+      </TaskProvider>
     </AuthProvider>
   );
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { CollectionItem } from '../types/types';
 import BinIcon from '../assets/bin.svg';
 import TickIcon from '../assets/tick.svg';
+import { CollectionItem } from '../types/types';
+import { getData } from '../helpers/getData';
 
 const ListItemWrapper = styled.li<{ isDone: boolean }>`
   position: relative;
@@ -12,12 +13,14 @@ const ListItemWrapper = styled.li<{ isDone: boolean }>`
   background-color: ${({ theme }) => theme.colors.light};
   list-style: none;
   display: grid;
+  transition: 0.5s background-color;
   grid-template-columns: 1fr 0.5fr;
   grid-template-rows: 1fr min-content;
   ${({ isDone }) =>
     isDone &&
     css`
       background-color: #b4ffcf;
+      text-decoration: line-through;
     `};
 `;
 const ListItemContent = styled.h3`
@@ -74,24 +77,19 @@ const ListItemStatus = styled.span`
 `;
 
 interface Item {
-  // item: CollectionItem;
-  item: any;
+  item: CollectionItem;
   removeItem: () => void;
+  doneItem: () => void;
   key: string;
 }
 
-const ListItem = ({ doneItem, removeItem, item }: any) => {
-  const today = new Date(item.createdAt.seconds * 1000);
-  const data = new Intl.DateTimeFormat('pl').format(today);
-  const hours = today.getHours();
-  const minutes = today.getMinutes();
-  const time = `${hours}:${minutes}`;
-
+const ListItem = ({ doneItem, removeItem, item }: Item) => {
+  const { data, hours, minuts } = getData(item.createdAt.seconds);
   return (
     <ListItemWrapper isDone={item.isDone} key={item.id}>
       <ListItemContent>{item.title}</ListItemContent>
       <ListItemData>
-        {time}
+        {`${hours}:${minuts}`}
         <span> {data}</span>
       </ListItemData>
       <ButtonWrapper>

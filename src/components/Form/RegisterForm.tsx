@@ -10,6 +10,7 @@ import {
   WrapperInput,
   WrapperForm,
   ErrorMessage,
+  FormHeading,
 } from './StyledForm';
 import { useForm } from '../../hook/useForm';
 
@@ -40,6 +41,7 @@ const RegisterForm = ({ setHaveAccount }: Form) => {
 
   return (
     <WrapperForm>
+      <FormHeading>Rejestracja</FormHeading>
       <WrapperInput>
         {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <label htmlFor="email">Adres Email</label>

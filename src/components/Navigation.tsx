@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { doSignOut } from '../firebase/auth';
 import Button from './Button';
-import { ModalContext } from '../context/modalContext';
+import { Nav } from '../types/types';
+import { SideBarButton } from './SideBar';
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -10,7 +11,15 @@ const HeaderWrapper = styled.header`
   left: 0;
   right: 0;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1rem;
+  @media only screen and (min-width: 600px) {
+    padding: 1.5rem 5rem;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
   ul {
     display: flex;
   }
@@ -28,8 +37,24 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const Navigation = () => {
-  const { setIsOpen }: any = useContext(ModalContext);
+const ButtonWrapper = styled.div`
+  button {
+    display: block;
+    position: static;
+    height: 100%;
+    width: 2rem;
+    font-size: 0.7rem;
+    @media only screen and (min-width: 350px) {
+      font-size: 0.8rem;
+      width: 3rem;
+    }
+    @media only screen and (min-width: 400px) {
+      font-size: 0.8rem;
+    }
+  }
+`;
+
+const Navigation = ({ setShowSideBar, setModalOpen }: Nav) => {
   const logoutHandler = () => {
     doSignOut();
   };
@@ -37,9 +62,14 @@ const Navigation = () => {
   return (
     <HeaderWrapper>
       <nav>
+        <ButtonWrapper>
+          <SideBarButton onClick={() => setShowSideBar(true)} type="button">
+            Menu
+          </SideBarButton>
+        </ButtonWrapper>
         <ul>
           <li>
-            <Button primary onClick={() => setIsOpen(true)}>
+            <Button primary onClick={() => setModalOpen(true)}>
               Dodaj
             </Button>
           </li>
