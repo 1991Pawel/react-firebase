@@ -13,13 +13,16 @@ export const useCollection = (name: string) => {
     return { id: doc.id, ...doc.data() };
   };
   useEffect(() => {
-    const subscribe = db.collection(name).onSnapshot((snapshot) => {
-      const dataFromCollection = snapshot.docs.map(documentsCollection);
-      const filterDataByUser = dataFromCollection.filter(
-        (item) => item.userId === user?.uid
-      );
-      setCollection(filterDataByUser);
-    });
+    const subscribe = db
+      .collection(name)
+      .orderBy('createdAt')
+      .onSnapshot((snapshot) => {
+        const dataFromCollection = snapshot.docs.map(documentsCollection);
+        const filterDataByUser = dataFromCollection
+          .filter((item) => item.userId === user?.uid)
+          .reverse();
+        setCollection(filterDataByUser);
+      });
     return () => subscribe();
   }, [currentUser, name, user]);
 

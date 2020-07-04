@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import AddTaskModal from './components/AddTaskModal';
 import { useModalContext } from './hook/useModalContext';
 import Sidebar from './components/SideBar';
+import SearchBar from './components/SearchBar';
 
 const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   display: flex;
@@ -57,6 +58,7 @@ const Home = () => {
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>Zadania</h3>
+            <SearchBar />
           </WrapperHeader>
           <List />
         </DashBoardContentWrapper>

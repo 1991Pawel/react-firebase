@@ -7,6 +7,7 @@ import { useCollection } from '../hook/useCollection';
 import { CollectionItem } from '../types/types';
 import { db } from '../firebase/firebase';
 import { useTaskContext } from '../hook/useTaskContext';
+import { useFilter } from '../hook/useFilter';
 
 const ListWrapper = styled.ul`
   margin-top: 2rem;
@@ -14,7 +15,9 @@ const ListWrapper = styled.ul`
 
 const List = () => {
   const data = useCollection('projects');
-  const { tasks, setTasks } = useTaskContext();
+  const { setTasks } = useTaskContext();
+  const filterTaskArray = useFilter();
+
   const removeItem = (id: string) => {
     db.collection('projects').doc(id).delete();
     toast.error('Zadanie zostało usuniete', {
@@ -51,8 +54,8 @@ const List = () => {
         limit={2}
       />
       <ListWrapper>
-        {tasks &&
-          tasks.map((item: CollectionItem) => (
+        {filterTaskArray &&
+          filterTaskArray.map((item: CollectionItem) => (
             <ListItem
               removeItem={() => removeItem(item.id)}
               key={item.id}
