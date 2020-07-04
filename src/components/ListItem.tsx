@@ -9,19 +9,23 @@ const ListItemWrapper = styled.li<{ isDone: boolean }>`
   position: relative;
   margin: 1rem 0;
   padding: 1rem 0.5rem;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background-color: ${({ theme }) => theme.colors.light};
   list-style: none;
   display: grid;
   transition: 0.5s background-color;
   grid-template-columns: 1fr 0.5fr;
   grid-template-rows: 1fr min-content;
+  border-radius: 0.3rem;
   ${({ isDone }) =>
     isDone &&
     css`
       background-color: #b4ffcf;
       text-decoration: line-through;
     `};
+  @media only screen and (min-width: 1200px) {
+    width: 48%;
+  }
 `;
 const ListItemContent = styled.h3`
   margin: 1rem 0;
@@ -74,6 +78,7 @@ const ListItemStatus = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.semi};
   padding: 0.3rem;
   transform: translate(0, 50%);
+  border-radius: 0.2rem;
 `;
 
 interface Item {

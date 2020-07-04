@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { SideBarToggle } from '../types/types';
-import Logo from './Logo/Logo';
+import { Logo } from './Logo/Logo';
 import { useTaskStatistic } from '../hook/useTaskStatistic';
 
 export const SideBarButton = styled.button`
@@ -38,12 +38,17 @@ const StatisticListItem = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.8rem;
   }
 `;
 const StatisticBarWrapper = styled.div`
   height: 1rem;
+
+  span {
+    font-size: 2rem;
+  }
 `;
 const StatisticBar = styled.div<{ procent?: string }>`
   border: 1px solid #ccc;
@@ -78,10 +83,6 @@ const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
   box-shadow: 2px 2px 2px #ccc;
   padding: 1rem;
   height: 100%;
-
-  span {
-    font-size: 1rem;
-  }
 
   @media only screen and (max-width: 800px) {
     transform: translateX(-300px);

@@ -4,17 +4,12 @@ import LoginForm from './components/Form/LoginForm';
 import RegisterForm from './components/Form/RegisterForm';
 import BackgroundWelcome from './assets/welcomeBg.svg';
 import welcomeImg from './assets/welcomeImg.svg';
+import { Logo } from './components/Logo/Logo';
 
 const WelcomeWrapper = styled.div`
   display: flex;
   align-items: center;
   height: 100vh;
-`;
-
-const Logo = styled.div`
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.primary};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;
 
 const WelcomeHeading = styled.h2`
