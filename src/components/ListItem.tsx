@@ -95,7 +95,9 @@ const ListItem = ({ search, doneItem, removeItem, item }: Item) => {
   return (
     <ListItemWrapper isDone={item.isDone} key={item.id}>
       <ListItemContent>
-        <Highlight search={search}>{item.title}</Highlight>
+        <Highlight highlightClassName="search-text" search={search}>
+          {item.title}
+        </Highlight>
       </ListItemContent>
       <ListItemData>
         {`${hours}:${minuts}`}
