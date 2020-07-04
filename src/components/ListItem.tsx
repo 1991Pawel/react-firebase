@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import Highlight from 'react-highlighter';
 import BinIcon from '../assets/bin.svg';
 import TickIcon from '../assets/tick.svg';
 import { CollectionItem } from '../types/types';
@@ -86,13 +87,16 @@ interface Item {
   removeItem: () => void;
   doneItem: () => void;
   key: string;
+  search: string;
 }
 
-const ListItem = ({ doneItem, removeItem, item }: Item) => {
+const ListItem = ({ search, doneItem, removeItem, item }: Item) => {
   const { data, hours, minuts } = getData(item.createdAt.seconds);
   return (
     <ListItemWrapper isDone={item.isDone} key={item.id}>
-      <ListItemContent>{item.title}</ListItemContent>
+      <ListItemContent>
+        <Highlight search={search}>{item.title}</Highlight>
+      </ListItemContent>
       <ListItemData>
         {`${hours}:${minuts}`}
         <span> {data}</span>

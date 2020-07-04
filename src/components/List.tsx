@@ -20,7 +20,7 @@ const ListWrapper = styled.ul`
 
 const List = () => {
   const data = useCollection('projects');
-  const { setTasks } = useTaskContext();
+  const { setTasks, search } = useTaskContext();
   const filterTaskArray = useFilter();
 
   const removeItem = (id: string) => {
@@ -62,6 +62,7 @@ const List = () => {
         {filterTaskArray &&
           filterTaskArray.map((item: CollectionItem) => (
             <ListItem
+              search={search}
               removeItem={() => removeItem(item.id)}
               key={item.id}
               item={item}

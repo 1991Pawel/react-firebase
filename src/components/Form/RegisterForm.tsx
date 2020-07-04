@@ -31,8 +31,8 @@ const RegisterForm = ({ setHaveAccount }: Form) => {
     event.preventDefault();
     try {
       await doCreateUserWithEmailAndPassword(email, password);
-      history.push('/dashboard');
       setError(false);
+      history.push('/dashboard');
     } catch (err) {
       setErrorMessage(err.message);
       setError(true);
