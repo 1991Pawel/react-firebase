@@ -22,6 +22,10 @@ const ListItemWrapper = styled.li<{ isDone: boolean }>`
       background-color: #b4ffcf;
       text-decoration: line-through;
     `};
+  @media only screen and (min-width: 1200px) {
+    width: 45%;
+    margin: 1rem;
+  }
 `;
 const ListItemContent = styled.h3`
   margin: 1rem 0;

@@ -11,6 +11,11 @@ import { useFilter } from '../hook/useFilter';
 
 const ListWrapper = styled.ul`
   margin-top: 2rem;
+  @media only screen and (min-width: 1200px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `;
 
 const List = () => {
