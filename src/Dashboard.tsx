@@ -7,12 +7,17 @@ import AddTaskModal from './components/AddTaskModal';
 import { useModalContext } from './hook/useModalContext';
 import Sidebar from './components/SideBar';
 import SearchBar from './components/SearchBar';
+import FilterPanel from './components/FilterPanel';
 
 const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   display: flex;
   background: #fbfbfb;
   min-height: 100vh;
   overflow: ${(props) => (props.isNotScrollable ? 'hidden' : 'none')};
+`;
+
+const FilterWrapper = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.primary};
 `;
 
 const WrapperHeader = styled.header`
@@ -58,7 +63,10 @@ const Home = () => {
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>Zadania</h3>
-            <SearchBar />
+            <FilterWrapper>
+              <SearchBar />
+              <FilterPanel />
+            </FilterWrapper>
           </WrapperHeader>
           <List />
         </DashBoardContentWrapper>

@@ -31,8 +31,8 @@ const LoginForm = ({ setHaveAccount }: Form) => {
 
     try {
       await doSignInWithEmailAndPassword(email, password);
-      history.push('/dashboard');
       setError(false);
+      history.push('/dashboard');
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);

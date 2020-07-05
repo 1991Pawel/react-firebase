@@ -6,6 +6,7 @@ export interface CollectionItem {
   userId: string;
   createdAt: TimeStamps;
   isDone: boolean;
+  search: string;
 }
 export interface SideBarToggle {
   showSideBar: boolean;
