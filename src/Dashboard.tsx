@@ -17,7 +17,7 @@ const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
 `;
 
 const FilterWrapper = styled.div`
-  border: 2px solid ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
 `;
 
 const WrapperHeader = styled.header`
