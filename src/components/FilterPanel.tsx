@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTaskContext } from '../hook/useTaskContext';
+import { filterValue } from '../helpers/getFilters';
 
 const FilterPanel = () => {
   const { filter, setFilter } = useTaskContext();
@@ -10,9 +11,9 @@ const FilterPanel = () => {
   return (
     <>
       <select value={filter} onChange={handleChange}>
-        <option value="ALL">Wszystkie</option>
-        <option value="DONE">Wykonane</option>
-        <option value="TODO">Niewykonane</option>
+        <option value={filterValue.ALL}>Wszystkie</option>
+        <option value={filterValue.DONE}>Wykonane</option>
+        <option value={filterValue.TODO}>Niewykonane</option>
       </select>
     </>
   );

@@ -1,5 +1,6 @@
 import { useTaskContext } from './useTaskContext';
 import { CollectionItem } from '../types/types';
+import { filterValue } from '../helpers/getFilters';
 
 export const useFilter = () => {
   const { search, tasks, filter } = useTaskContext();
@@ -9,14 +10,14 @@ export const useFilter = () => {
   );
   if (
     search === '' &&
-    filter === 'ALL' &&
+    filter === filterValue.ALL &&
     tasks?.length === filterArray?.length
   )
     return tasks;
-  if (filter === 'TODO') {
+  if (filter === filterValue.TODO) {
     return filterArray?.filter((task: CollectionItem) => !task.isDone);
   }
-  if (filter === 'DONE') {
+  if (filter === filterValue.DONE) {
     return filterArray?.filter((task: CollectionItem) => task.isDone);
   }
   return filterArray;
