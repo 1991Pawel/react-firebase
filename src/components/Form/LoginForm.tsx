@@ -55,7 +55,7 @@ const LoginForm = ({ setHaveAccount }: Form) => {
         setPassword={setPassword}
         email={email}
         setEmail={setEmail}
-        loading={loading}
+        loading={loading ? 1 : 0}
       />
       <FormFooter>
         <Button onClick={loginHandler} primary>

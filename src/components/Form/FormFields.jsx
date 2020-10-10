@@ -3,7 +3,7 @@ import { WrapperInput } from './StyledForm';
 /* eslint-disable jsx-a11y/label-has-associated-control */
 const FormFields = ({ loading, password, setPassword, setEmail, email }) => {  
   return (
-    <WrapperInput loading={loading}>
+    <WrapperInput {...loading}>
       <label htmlFor="email">Adres Email</label>
       <input
         onChange={(e) => setEmail(e.target.value)}

@@ -19,7 +19,6 @@ const WrapperInput = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 2px ${({ theme }) => theme.colors.lightGrey};
-  opacity:  ${({ loading }) => loading ? '.2' : '1'};
   padding: 1rem;
 
   label {
