@@ -18,6 +18,10 @@ input {
   font-size:1rem;
 }
 
+select {
+  font-size:1rem;
+}
+
 .highlight {
   background:#574CF2;
   color:#fff;

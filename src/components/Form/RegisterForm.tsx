@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Form } from '../../types/types';
+import FormFields from './FormFields';
 
 import Button from '../Button';
 import { doCreateUserWithEmailAndPassword } from '../../firebase/auth';
 import {
   AccountMessage,
   FormFooter,
-  WrapperInput,
   WrapperForm,
   ErrorMessage,
   FormHeading,
@@ -25,45 +25,40 @@ const RegisterForm = ({ setHaveAccount }: Form) => {
     setError,
     setErrorMessage,
     errorMessage,
+    loading,
+    setLoading,
   } = useForm();
 
   const handleSignUp = async (event: MouseEvent) => {
     event.preventDefault();
     try {
+      setLoading(true);
       await doCreateUserWithEmailAndPassword(email, password);
       setError(false);
       history.push('/dashboard');
     } catch (err) {
+      setLoading(false);
       setErrorMessage(err.message);
       setError(true);
     }
   };
 
+  
+
   return (
     <WrapperForm>
       <FormHeading>Rejestracja</FormHeading>
-      <WrapperInput>
-        {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        <label htmlFor="email">Adres Email</label>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          id="email"
-          name="email"
-          type="text"
-          value={email}
-        />
-        <label htmlFor="password">Hasło</label>
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-        />
-      </WrapperInput>
+      {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      <FormFields
+        password={password}
+        setPassword={setPassword}
+        email={email}
+        setEmail={setEmail}
+        loading={loading}
+      />
       <FormFooter>
         <Button onClick={(e: MouseEvent) => handleSignUp(e)} primary>
-          Zarejestruj
+          {loading ? 'Rejestracja...' : 'Zarejestruj'}
         </Button>
         <AccountMessage>
           <button type="button" onClick={() => setHaveAccount(true)}>

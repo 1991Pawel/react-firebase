@@ -2,11 +2,11 @@
 import React from 'react';
 import { Form } from '../../types/types';
 import Button from '../Button';
+import FormFields from './FormFields';
 import { doSignInWithEmailAndPassword } from '../../firebase/auth';
 import {
   AccountMessage,
   FormFooter,
-  WrapperInput,
   WrapperForm,
   ErrorMessage,
   FormHeading,
@@ -24,12 +24,15 @@ const LoginForm = ({ setHaveAccount }: Form) => {
     setError,
     setErrorMessage,
     errorMessage,
+    loading,
+    setLoading
   } = useForm();
 
   const loginHandler = async (event: MouseEvent) => {
     event.preventDefault();
 
     try {
+      setLoading(true);
       await doSignInWithEmailAndPassword(email, password);
       setError(false);
       history.push('/dashboard');
@@ -37,7 +40,9 @@ const LoginForm = ({ setHaveAccount }: Form) => {
       // eslint-disable-next-line no-console
       console.log(err);
       setErrorMessage(err.message);
+      setLoading(false);
       setError(true);
+  
     }
   };
 
@@ -45,28 +50,16 @@ const LoginForm = ({ setHaveAccount }: Form) => {
     <WrapperForm>
       <FormHeading>Logowanie</FormHeading>
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      <WrapperInput>
-        <label htmlFor="email">Adres Email</label>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          id="email"
-          name="email"
-          type="text"
-          value={email}
-        />
-        <label htmlFor="password">Hasło</label>
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-        />
-      </WrapperInput>
-
+      <FormFields
+        password={password}
+        setPassword={setPassword}
+        email={email}
+        setEmail={setEmail}
+        loading={loading}
+      />
       <FormFooter>
         <Button onClick={loginHandler} primary>
-          Zaloguj
+          {loading ? 'Logowanie...' : 'Zaloguj'}
         </Button>
         <AccountMessage>
           <button onClick={() => setHaveAccount(false)} type="button">

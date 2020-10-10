@@ -4,11 +4,13 @@ import { FirebaseError } from '../types/types';
 
 export const useForm = () => {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const history = useHistory();
   const [error, setError] = useState<FirebaseError>(false);
   const [errorMessage, setErrorMessage] = useState('');
   return {
+  
     email,
     setEmail,
     password,
@@ -18,5 +20,7 @@ export const useForm = () => {
     setError,
     errorMessage,
     setErrorMessage,
+    loading,
+    setLoading,
   };
 };
