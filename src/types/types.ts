@@ -8,6 +8,15 @@ export interface CollectionItem {
   isDone: boolean;
   search: string;
 }
+
+
+export interface NewsCollection {
+  title: string;
+  url: string;
+  publishedAt: string;
+  urlToImage: string;
+}
+
 export interface SideBarToggle {
   showSideBar: boolean;
   setShowSideBar: React.Dispatch<React.SetStateAction<boolean>>;

@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import ArticleWidget from './ArticleWidget';
 import { SideBarToggle } from '../types/types';
 import { Logo } from './Logo/Logo';
 import { useTaskStatistic } from '../hook/useTaskStatistic';
+
 
 export const SideBarButton = styled.button`
   position: absolute;
@@ -14,6 +16,7 @@ export const SideBarButton = styled.button`
   background-image: linear-gradient(90deg, #5c51f2, #234bcf);
   border: none;
   cursor: pointer;
+
   @media only screen and (min-width: 801px) {
     display: none;
   }
@@ -22,6 +25,7 @@ export const SideBarButton = styled.button`
 const StatisticList = styled.ul`
   list-style: none;
   margin-top: 5rem;
+  
 `;
 
 const StatisticListItem = styled.li`
@@ -41,6 +45,7 @@ const StatisticListItem = styled.li`
     width: 1.2rem;
     height: 1.2rem;
     font-size: 0.8rem;
+    
   }
 `;
 const StatisticBarWrapper = styled.div`
@@ -69,7 +74,13 @@ const StatisticBar = styled.div<{ procent?: string }>`
     transform: ${({ procent }) => `translatex(${procent}%)`};
     background: #fff;
     transition: 0.5s ease-in-out;
+    
+    
   }
+`;
+
+const ArticleWrapper = styled.section`
+  margin-top:1rem;
 `;
 
 const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
@@ -83,6 +94,10 @@ const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
   box-shadow: 2px 2px 2px #ccc;
   padding: 1rem;
   height: 100%;
+  overflow-y:auto;
+  scrollbar-width: none;
+ 
+ 
 
   @media only screen and (max-width: 800px) {
     transform: translateX(-300px);
@@ -117,6 +132,9 @@ const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
       <StatisticBarWrapper>
         <span>{`${procent}%`}</span>
         <StatisticBar procent={procent} />
+        <ArticleWrapper>
+          <ArticleWidget />
+        </ArticleWrapper>
       </StatisticBarWrapper>
     </SideBarWrapper>
   );
