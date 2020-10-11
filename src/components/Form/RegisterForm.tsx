@@ -54,7 +54,6 @@ const RegisterForm = ({ setHaveAccount }: Form) => {
         setPassword={setPassword}
         email={email}
         setEmail={setEmail}
-        loading={loading}
       />
       <FormFooter>
         <Button onClick={(e: MouseEvent) => handleSignUp(e)} primary>
