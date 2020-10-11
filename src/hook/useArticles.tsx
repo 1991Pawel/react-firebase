@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
 
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/', ;
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
 export const useArticles = () => {
   const [article, setArticle] = useState([]);
