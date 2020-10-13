@@ -10,6 +10,7 @@ import GlobalStyle from './GlobalStyles/GlobalStyles';
 import { ModalProvider } from './context/modalContext';
 import { TaskProvider } from './context/taskContext';
 
+
 function App() {
   return (
     <AuthProvider>
