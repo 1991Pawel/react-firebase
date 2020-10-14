@@ -4,18 +4,27 @@ import ArticleWidget from './ArticleWidget';
 import { SideBarToggle } from '../types/types';
 import { Logo } from './Logo/Logo';
 import { useTaskStatistic } from '../hook/useTaskStatistic';
+import cross  from '../assets/cross.svg';
 
 
 export const SideBarButton = styled.button`
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1rem;
+  right: 1rem;
   height: 2rem;
   width: 2rem;
   color: ${({ theme }) => theme.colors.light};
   background-image: linear-gradient(90deg, #5c51f2, #234bcf);
   border: none;
   cursor: pointer;
+  display:flex;
+  justify-content:center;
+
+  img {
+    height:1.1rem;
+    width:1.1rem;
+    color:#fff;
+  }
 
   @media only screen and (min-width: 801px) {
     display: none;
@@ -63,6 +72,8 @@ const StatisticBar = styled.div<{ procent?: string }>`
   background: #b4ffcf;
   position: relative;
 
+  
+
   &:after {
     position: absolute;
     content: '';
@@ -102,12 +113,14 @@ const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
   @media only screen and (max-width: 800px) {
     transform: translateX(-300px);
     transition: 0.2s ease-in-out transform;
+ 
   }
   ${({ showSideBar }) =>
     showSideBar &&
     css`
       @media only screen and (max-width: 800px) {
         transform: translateX(0px);
+        width:320px;
       }
     `};
 `;
@@ -119,7 +132,7 @@ const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
     <SideBarWrapper showSideBar={showSideBar}>
       <Logo>yourTask</Logo>
       <SideBarButton type="button" onClick={() => setShowSideBar(false)}>
-        X
+        <img src={cross} alt="close menu icon" />
       </SideBarButton>
       <StatisticList>
         <StatisticListItem>

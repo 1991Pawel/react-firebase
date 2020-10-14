@@ -10,5 +10,11 @@ export const theme = {
     light: 300,
     semi: 600,
     bold: 700,
+
   },
 };
+
+
+
+
+

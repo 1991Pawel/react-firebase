@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
 body {
     font-size:10px;
     font-family: 'Montserrat', sans-serif;
+    
 }
 
 input {
