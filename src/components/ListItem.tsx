@@ -1,12 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Highlight from 'react-highlighter';
+import { motion } from 'framer-motion';
 import BinIcon from '../assets/bin.svg';
 import TickIcon from '../assets/tick.svg';
 import { CollectionItem } from '../types/types';
 import { getData } from '../helpers/getData';
 
-const ListItemWrapper = styled.li<{ isDone: boolean }>`
+const ListItemWrapper = styled(motion.li)<{ isDone: boolean }>`
   position: relative;
   margin: 1rem 0;
   padding: 1rem 0.5rem;
@@ -89,11 +90,17 @@ interface Item {
   key: string;
   search: string;
 }
-
 const ListItem = ({ search, doneItem, removeItem, item }: Item) => {
   const { data, hours, minuts } = getData(item.createdAt.seconds);
+
+  
   return (
-    <ListItemWrapper isDone={item.isDone} key={item.id}>
+    <ListItemWrapper
+      isDone={item.isDone}
+      key={item.id}
+      initial={{ y:'-5vh', opacity:0 }}
+      animate={{ y:0, opacity:1, }}
+    >
       <ListItemContent>
         <Highlight search={search}>{item.title}</Highlight>
       </ListItemContent>

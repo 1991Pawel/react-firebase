@@ -46,7 +46,12 @@ const RegisterForm = ({ setHaveAccount }: Form) => {
   
 
   return (
-    <WrapperForm>
+    <WrapperForm
+
+      initial={{ y:'-5vh', opacity:0 }}
+      animate={{ y:0, opacity:1, }}
+    >
+      
       <FormHeading>Rejestracja</FormHeading>
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       <FormFields
