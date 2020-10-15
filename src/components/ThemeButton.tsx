@@ -77,7 +77,7 @@ const ThemeWrapper = styled.div<{ isDarkTheme: boolean }>`
          transform:translate(-100%,-50%);
     `};
     }
-    }
+    
 
 
     ${({ isDarkTheme }) =>
