@@ -69,7 +69,8 @@ const StatisticBar = styled.div<{ procent?: string }>`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #b4ffcf;
+  background: red;
+  background: ${({ theme }) => theme.colors.green};
   position: relative;
 
   
