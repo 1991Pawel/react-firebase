@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import ArticleWidget from './ArticleWidget';
+import ThemeButton from './ThemeButton';
 import { SideBarToggle } from '../types/types';
 import { Logo } from './Logo/Logo';
 import { useTaskStatistic } from '../hook/useTaskStatistic';
@@ -13,7 +14,7 @@ export const SideBarButton = styled.button`
   right: 1rem;
   height: 2rem;
   width: 2rem;
-  color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.textLight};
   background-image: linear-gradient(90deg, #5c51f2, #234bcf);
   border: none;
   cursor: pointer;
@@ -23,7 +24,6 @@ export const SideBarButton = styled.button`
   img {
     height:1.1rem;
     width:1.1rem;
-    color:#fff;
   }
 
   @media only screen and (min-width: 801px) {
@@ -33,21 +33,21 @@ export const SideBarButton = styled.button`
 
 const StatisticList = styled.ul`
   list-style: none;
-  margin-top: 5rem;
+  margin-top: 2rem;
   
 `;
 
 const StatisticListItem = styled.li`
   font-size: 0.9rem;
   font-weight: ${({ theme }) => theme.fontWeight.semi};
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.textDark};
   margin: 1rem 0;
   display: flex;
   justify-content: space-between;
 
   span {
     background: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.textLight};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,6 +90,10 @@ const StatisticBar = styled.div<{ procent?: string }>`
   }
 `;
 
+const ThemeWrapper = styled.div`
+  margin-top:2rem;
+`;
+
 const ArticleWrapper = styled.section`
   margin-top:1rem;
 `;
@@ -101,7 +105,8 @@ const SideBarWrapper = styled.div<{ showSideBar?: boolean }>`
   bottom: 0;
   z-index: 1;
   width: 300px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.textDark};
   box-shadow: 2px 2px 2px #ccc;
   padding: 1rem;
   height: 100%;
@@ -134,6 +139,9 @@ const SideBar = ({ showSideBar, setShowSideBar }: SideBarToggle) => {
       <SideBarButton type="button" onClick={() => setShowSideBar(false)}>
         <img src={cross} alt="close menu icon" />
       </SideBarButton>
+      <ThemeWrapper>
+        <ThemeButton />
+      </ThemeWrapper>
       <StatisticList>
         <StatisticListItem>
           Wszystkie Zadania <span>{totalTasks}</span>

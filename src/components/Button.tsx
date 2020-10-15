@@ -23,7 +23,7 @@ const StyledButton = styled.button<{ primary?: boolean }>`
     primary &&
     css`
       background-color: ${theme.colors.primary};
-      color: ${theme.colors.light};
+      color: ${theme.colors.textLight};
       background-image: linear-gradient(90deg, #5c51f2, #234bcf);
     `};
 `;
