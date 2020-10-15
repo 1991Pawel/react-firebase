@@ -1,5 +1,6 @@
 import React from 'react';
 import { WrapperInput } from './StyledForm';
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 const FormFields = ({ password, setPassword, setEmail, email }) => {  
   return (

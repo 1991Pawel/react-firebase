@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 import { db } from '../firebase/firebase';
 import { useCurrentUser } from '../hook/useCurrentUser';
 import Button from './Button';
 import { useModalContext } from '../hook/useModalContext';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ModalWrapper = styled.div`
+const ModalWrapper = styled(motion.div)`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -92,7 +93,12 @@ const AddTaskModal = () => {
   };
 
   return (
-    <ModalWrapper onClick={handleHide}>
+
+    <ModalWrapper
+      onClick={handleHide}
+      initial={{ opacity:.5 }}
+      animate={{ opacity:1 }}
+    >
       <Modal>
         <ModalHeading>Zadanie:</ModalHeading>
         {error && <ModalMessage>input is empty</ModalMessage>}

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const WrapperForm = styled.form`
+const WrapperForm = styled(motion.form)`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;

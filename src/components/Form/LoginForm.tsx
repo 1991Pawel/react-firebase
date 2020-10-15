@@ -47,7 +47,13 @@ const LoginForm = ({ setHaveAccount }: Form) => {
   };
 
   return (
-    <WrapperForm>
+    <WrapperForm
+
+
+      initial={{ x:'10%', opacity:0 }}
+      animate={{ x:0, opacity:1, }}
+    
+    >
       <FormHeading>Logowanie</FormHeading>
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       <FormFields
