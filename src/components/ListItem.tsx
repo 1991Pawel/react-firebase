@@ -11,7 +11,7 @@ const ListItemWrapper = styled.li<{ isDone: boolean }>`
   margin: 1rem 0;
   padding: 1rem 0.5rem;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => theme.colors.lightGrey};
   list-style: none;
   display: grid;
   transition: 0.5s background-color;
@@ -21,7 +21,7 @@ const ListItemWrapper = styled.li<{ isDone: boolean }>`
   ${({ isDone }) =>
     isDone &&
     css`
-      background-color: #b4ffcf;
+      background-color: ${({ theme }) => theme.colors.green};
       text-decoration: line-through;
     `};
   @media only screen and (min-width: 1200px) {
@@ -31,7 +31,7 @@ const ListItemWrapper = styled.li<{ isDone: boolean }>`
 const ListItemContent = styled.h3`
   margin: 1rem 0;
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.textDark};
   color: ${({ theme }) => theme.fontWeight.semi};
   word-break: break-word;
   grid-row: 1 / span 1;
@@ -66,7 +66,7 @@ const ListItemButton = styled.button`
 const ListItemData = styled.div`
   font-size: 0.7rem;
   font-weight: ${({ theme }) => theme.fontWeight.semi};
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.textDark};
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
 `;
@@ -74,7 +74,7 @@ const ListItemStatus = styled.span`
   position: absolute;
   bottom: 0;
   right: 0;
-  color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.textLight};
   background: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.fontWeight.semi};
   padding: 0.3rem;

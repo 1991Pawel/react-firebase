@@ -11,7 +11,7 @@ import FilterPanel from './components/FilterPanel';
 
 const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   display: flex;
-  background: #fbfbfb;
+  background: ${({ theme }) => theme.colors.light};
   min-height: 100vh;
   overflow: ${(props) => (props.isNotScrollable ? 'hidden' : 'none')};
 `;
@@ -35,6 +35,9 @@ const WrapperHeader = styled.header`
   }
   span {
     font-size: 2rem;
+  }
+  h3 {
+    color: ${({ theme }) => theme.colors.textDark};
   }
 `;
 

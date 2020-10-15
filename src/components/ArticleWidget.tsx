@@ -34,7 +34,7 @@ const Article = styled.article`
   margin: 1rem 0;
   padding: 1rem 0.5rem;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => theme.colors.lightGrey};
   border-radius: 0.3rem;
   transition: background-color .2s ease-in-out;
 
@@ -45,7 +45,7 @@ const Article = styled.article`
  h5 {
 
      font-size:.9rem;
-     color: ${({ theme }) => theme.colors.dark};
+     color: ${({ theme }) => theme.colors.textDark};
      font-weight: ${({ theme }) => theme.fontWeight.semi};
  }
 
@@ -55,7 +55,7 @@ const Article = styled.article`
      top:0;
      right:0;
      padding:.2rem;
-    color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.textLight};
     background-color: ${({ theme }) => theme.colors.primary};
     border-radius: 0.2rem;
     transform:translateY(50%);
