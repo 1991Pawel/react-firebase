@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { getNewsData } from '../helpers/getNewsData';
 import { NewsCollection } from '../types/types';
-import { useArticles } from '../hook/useArticles';
 import { usePagination } from '../hook/usePagination';
+import { data } from '../data/fakeData';
 
 const SectionHeading = styled.h3`
       margin:1rem 0;
@@ -77,15 +77,13 @@ const Article = styled.article`
 `;
 
 const ArticleWidget = () => {
-  const { article, error } = useArticles();
-  const { currentPosts, pageNumber, goToPage, currentPage } = usePagination(article);
+  const { currentPosts, pageNumber, goToPage, currentPage } = usePagination(data);
   return (
     <>
       <SectionHeading>Wiadomośći</SectionHeading>
       <ButtonWrapper>
         {pageNumber.map((number: number) => <PaginationBtn isActive={currentPage === number} onClick={() => goToPage(number)} key={number}>{number}</PaginationBtn>)}
       </ButtonWrapper>
-      <p>{error && 'Nie można załadować artykułów'}</p>
       {currentPosts?.map(({ title, url, publishedAt, urlToImage }: NewsCollection) => {
         return (
           <a key={title} target="_blank" rel="noopener noreferrer" href={url}>
