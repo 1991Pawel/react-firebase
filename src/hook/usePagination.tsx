@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { NewsCollection } from '../types/types';
+// import { NewsCollection } from '../types/types';
 
-export const usePagination = (dataEntries: NewsCollection[], elementsOnPage = 3) => {
+export const usePagination = (dataEntries: any[], elementsOnPage = 3) => {
   const [currentPage, setCurrentPage] = useState(1);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [postPerPage, setPostPerPage] = useState(elementsOnPage);
