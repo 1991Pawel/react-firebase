@@ -29,6 +29,10 @@ const PaginationBtn = styled.button<Props>`
       cursor:pointer;
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+
 const Article = styled.article`
   position:relative;
   margin: 1rem 0;
@@ -38,9 +42,8 @@ const Article = styled.article`
   border-radius: 0.3rem;
   transition: background-color .2s ease-in-out;
 
- a {
-     text-decoration:none;
- }
+
+
 
  h5 {
 
@@ -86,13 +89,13 @@ const ArticleWidget = () => {
       </ButtonWrapper>
       {currentPosts?.map(({ title, url, publishedAt, urlToImage }: NewsCollection) => {
         return (
-          <a key={title} target="_blank" rel="noopener noreferrer" href={url}>
+          <StyledLink key={title} target="_blank" rel="noopener noreferrer" href={url}>
             <Article>
               <img src={urlToImage} alt="" />
               <h5>{title}</h5>
               <time>{getNewsData(publishedAt)}</time>
             </Article>
-          </a>
+          </StyledLink>
         );
       })}
     </>

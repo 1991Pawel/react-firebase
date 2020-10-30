@@ -16,10 +16,6 @@ const DashBoardWrapper = styled.div<{ isNotScrollable?: boolean }>`
   overflow: ${(props) => (props.isNotScrollable ? 'hidden' : 'none')};
 `;
 
-const FilterWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-`;
-
 const WrapperHeader = styled.header`
   border-bottom: 1px solid #d1d1d1;
   margin-top: 10rem;
@@ -66,10 +62,10 @@ const Home = () => {
         <DashBoardContentWrapper>
           <WrapperHeader>
             <h3>Zadania</h3>
-            <FilterWrapper>
+            <div>
               <SearchBar />
               <FilterPanel />
-            </FilterWrapper>
+            </div>
           </WrapperHeader>
           <List />
         </DashBoardContentWrapper>
