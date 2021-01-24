@@ -4,6 +4,7 @@
 
 # I learned:
 - How works firebase.
+- How to add dark mode.
 
 ## Installation
 
