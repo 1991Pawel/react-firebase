@@ -1,6 +1,9 @@
 
-# YourTask
+# YourTask react/ts
 - task management application with login/register.
+
+# I learned:
+- How works firebase.
 
 ## Installation
 
